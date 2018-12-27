@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         View view = mInflater.inflate(R.layout.tab_indicator,null);
         ImageView img = view.findViewById(R.id.icon_tab);
         TextView text = view.findViewById(R.id.txt_indicator);
+
         img.setBackgroundResource(tab.getImg());
         text.setText(tab.getTitle());
         return view;
