@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PLB</string>
+    <string name="home">首页</string>
+    <string name="shop">店铺</string>
+    <string name="shopCart">购物车</string>
+    <string name="personal">个人中心</string>
+</resources>
