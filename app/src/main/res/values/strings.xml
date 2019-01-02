@@ -4,4 +4,10 @@
     <string name="shop">店铺</string>
     <string name="shopCart">购物车</string>
     <string name="personal">个人中心</string>
+    <string name="manager">管理</string>
+    <string name="complete">完成</string>
+    <string name="selectAll">全选</string>
+    <string name="settlement">结算</string>
+    <string name="total">合计：</string>
+    <string name="delete">删除</string>
 </resources>

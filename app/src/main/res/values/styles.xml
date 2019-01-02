@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ck">
+        <item name="android:button">@drawable/ck_all</item>
+    </style>
+
 </resources>
