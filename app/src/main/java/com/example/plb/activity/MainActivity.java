@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.example.plb.R;
 import com.example.plb.bean.Tab;
 import com.example.plb.fragment.HomeFragment;
 import com.example.plb.fragment.PersonalFragment;
@@ -40,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             //设置状态栏颜色为透明
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        //隐藏标题栏
-        ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
+
         setContentView(R.layout.activity_main);
         initTab();
     }
