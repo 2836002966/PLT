@@ -7,4 +7,6 @@
     <color name="gray">#808080</color>
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
+    <color name="orange">#FF6100</color>
+    <color name="lightgray">#e0e0e0</color>
 </resources>

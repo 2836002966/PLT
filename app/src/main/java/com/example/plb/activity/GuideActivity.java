@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.plb.MainActivity;
 import com.example.plb.R;
 
 public class GuideActivity extends AppCompatActivity {

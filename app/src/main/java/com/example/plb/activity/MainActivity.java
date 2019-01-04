@@ -1,4 +1,4 @@
-package com.example.plb.activity;
+package com.example.plb;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.plb.R;
 import com.example.plb.bean.Tab;
 import com.example.plb.fragment.HomeFragment;
 import com.example.plb.fragment.PersonalFragment;
