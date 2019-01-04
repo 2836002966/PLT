@@ -1,4 +1,4 @@
-package com.example.plb;
+package com.example.plb.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.example.plb.R;
 
 public class GuideActivity extends AppCompatActivity {
     private Button jump;
