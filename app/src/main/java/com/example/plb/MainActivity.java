@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //隐藏标题栏
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        //actionBar.hide();
         setContentView(R.layout.activity_main);
         initTab();
     }
