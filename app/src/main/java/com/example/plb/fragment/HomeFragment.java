@@ -27,6 +27,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements View.OnClickListener{
     private View view;
     private ViewPager viewPager;
+    private ViewPager viewPager_hot;
     private MyAdapter adapter;
     private List<Fragment> fragments;
     private ImageView dot1,dot2,dot3,dot4;
@@ -42,12 +43,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     private void init(View view) {
-        viewPager = view.findViewById(R.id.viewPager);
+        viewPager = view.findViewById(R.id.viewPager1);
+        viewPager_hot=view.findViewById(R.id.viewPager2);
         fragments = new ArrayList<>();
         fragments.add(new HomeFragment_1());
         fragments.add(new HomeFragment_2());
         fragments.add(new HomeFragment_3());
         fragments.add(new HomeFragment_4());
+
 
         dot1 = view.findViewById(R.id.dot1);
         dot2 = view.findViewById(R.id.dot2);
