@@ -10,9 +10,10 @@
         <RelativeLayout
             android:id="@+id/rl_title"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="#ed6a1a"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/iv_exit"
@@ -27,7 +28,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="我的"
                 android:textColor="#fff"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -224,8 +225,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/rl_collection"
-            android:background="#d6d3cf"/>
+            android:layout_below="@+id/rl_collection"
+            android:background="#d6d3cf" />
 
         <RelativeLayout
             android:id="@+id/rl_dailyListing"
