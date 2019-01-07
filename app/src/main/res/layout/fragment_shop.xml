@@ -6,7 +6,6 @@
    <include layout="@layout/stop_head" android:id="@+id/head"/>
 
     <LinearLayout
-        android:layout_below="@id/head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#fbfbfb"
