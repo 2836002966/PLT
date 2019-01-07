@@ -1,4 +1,4 @@
-package com.example.plb;
+package com.example.plb.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.plb.R;
 
 /**
  * Created by 陈 on 2019/1/3.

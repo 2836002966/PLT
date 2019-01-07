@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.plb.DetailsActivity;
+import com.example.plb.activity.DetailsActivity;
 import com.example.plb.R;
 
 

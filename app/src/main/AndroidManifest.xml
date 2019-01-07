@@ -24,6 +24,9 @@
         <activity
             android:name=".activity.FirmOrder"
             android:label="@string/title_activity_firm_order" />
+        <activity
+            android:name=".activity.DetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.XiangxiProductInfo" />
         <activity android:name=".activity.PersonalActivity" />
         <activity android:name=".activity.OrderActivity" />

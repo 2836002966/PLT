@@ -6,9 +6,10 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.example.plb.DetailsActivity">
+    tools:context="com.example.plb.activity.DetailsActivity">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -1,4 +1,4 @@
-package com.example.plb;
+package com.example.plb.activity;
 
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.plb.R;
 import com.example.plb.fragment.DetailsDetailsFragment;
 import com.example.plb.fragment.DetailsShopFragment;
 
