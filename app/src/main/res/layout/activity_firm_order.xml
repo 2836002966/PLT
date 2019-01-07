@@ -118,4 +118,5 @@
             android:layout_height="wrap_content"
             android:text="店家配送/快递"/>
     </FrameLayout>
+
 </LinearLayout>

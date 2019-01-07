@@ -41,6 +41,7 @@ public class commodity extends AppCompatActivity implements View.OnClickListener
             case R.id.settlement:
                 Intent intent = new Intent(this,FirmOrder.class);
                 startActivity(intent);
+
                 break;
             case R.id.commodity_back:
                 finish();

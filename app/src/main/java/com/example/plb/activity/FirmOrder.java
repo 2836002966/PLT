@@ -19,6 +19,7 @@ public class FirmOrder extends Activity implements View.OnClickListener{
     private void initView(){
         back=findViewById(R.id.order_back);
         back.setOnClickListener(this);
+
     }
 
     @Override
