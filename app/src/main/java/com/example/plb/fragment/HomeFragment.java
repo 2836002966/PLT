@@ -33,7 +33,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private ViewPager viewPager;
     private ViewPager viewPager_hot;
     private MyAdapter adapter;
+    private MyAdapter adapter_hot;
     private List<Fragment> fragments;
+    private List<Fragment> fragments_hot;
     private ImageView dot1,dot2,dot3,dot4;
     private FragmentManager manager;
     int i=0;
@@ -55,6 +57,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         fragments.add(new HomeFragment_3());
         fragments.add(new HomeFragment_4());
 
+        fragments_hot = new ArrayList<>();
+        fragments_hot.add(new HomeFragment_hot_1());
+        fragments_hot.add(new HomeFragment_hot_2());
 
         dot1 = view.findViewById(R.id.dot1);
         dot2 = view.findViewById(R.id.dot2);
@@ -65,7 +70,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         dot3.setOnClickListener(this);
         dot4.setOnClickListener(this);
         adapter = new MyAdapter(getActivity().getSupportFragmentManager(),fragments);
+        adapter_hot=new MyAdapter(getActivity().getSupportFragmentManager(),fragments_hot);
         viewPager.setAdapter(adapter);
+        viewPager_hot.setAdapter(adapter_hot);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
