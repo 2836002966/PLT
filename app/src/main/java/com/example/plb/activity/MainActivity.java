@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             //设置状态栏颜色为透明
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
         setContentView(R.layout.activity_main);
         initTab();
     }

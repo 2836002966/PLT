@@ -20,6 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity android:name=".XiangxiProductInfo"/>
+
+        <activity android:name=".PersonalActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".settingActivity"></activity>
     </application>
 
 </manifest>
