@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context="com.example.plb.activity.commodity">
     <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/orange"
         android:layout_alignParentTop="true">
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/commodity_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@mipmap/back"/>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/shopCart"
+            android:text="@string/market1"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -34,13 +41,17 @@
             android:layout_marginRight="10dp"/>
 
     </RelativeLayout>
-    <ListView
-        android:id="@+id/listview"
-        android:layout_marginTop="56dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    </ListView>
+    <RelativeLayout
+        android:layout_marginTop="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/bottom"
@@ -124,5 +135,4 @@
             android:background="@color/gray"/>
 
     </RelativeLayout>
-
 </RelativeLayout>

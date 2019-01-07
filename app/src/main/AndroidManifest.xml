@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".activity.GuideActivity"
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.GuideActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity android:name=".XiangxiProductInfo"/>
-
-        <activity android:name=".PersonalActivity" />
-        <activity android:name=".OrderActivity" />
-        <activity android:name=".settingActivity"></activity>
+        <activity
+            android:name=".activity.FirmOrder"
+            android:label="@string/title_activity_firm_order" />
+        <activity android:name=".activity.XiangxiProductInfo" />
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.settingActivity" />
+        <activity android:name=".activity.commodity"></activity>
     </application>
 
 </manifest>

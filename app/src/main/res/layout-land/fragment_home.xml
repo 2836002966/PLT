@@ -8,7 +8,7 @@
         android:id="@+id/title_home"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/orange"
         android:gravity="center_vertical">
         <ImageButton
             android:layout_width="30dp"

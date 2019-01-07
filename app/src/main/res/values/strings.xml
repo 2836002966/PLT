@@ -3,6 +3,8 @@
     <string name="home">首页</string>
     <string name="shop">店铺</string>
     <string name="shopCart">购物车</string>
+    <string name="market1">五一市场</string>
+    <string name="market2">西园大市场</string>
     <string name="personal">个人中心</string>
     <string name="manager">管理</string>
     <string name="complete">完成</string>
@@ -10,4 +12,6 @@
     <string name="settlement">结算</string>
     <string name="total">合计：</string>
     <string name="delete">删除</string>
+    <string name="firm_order">确认订单</string>
+    <string name="title_activity_firm_order">FirmOrder</string>
 </resources>

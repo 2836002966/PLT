@@ -1,4 +1,4 @@
-package com.example.plb;
+package com.example.plb.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.plb.R;
 import com.example.plb.bean.ProductInfo;
 
 import java.util.ArrayList;
