@@ -42,6 +42,10 @@
         <item name="android:windowExitAnimation">@anim/productinfo_dialog_out</item>
     </style>
 
+    <style name="shop_attention">
+        <item name="android:button">@drawable/selector_icon_shop_attention</item>
+    </style>
+
     <style name="setting">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

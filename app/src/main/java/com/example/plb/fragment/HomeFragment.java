@@ -1,24 +1,21 @@
 package com.example.plb.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.plb.R;
-import com.example.plb.XiangxiProductInfo;
-import com.example.plb.bean.ProductInfo;
 import com.example.plb.adapter.MyAdapter;
 
 import java.util.ArrayList;
@@ -38,13 +35,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private List<Fragment> fragments_hot;
     private ImageView dot1,dot2,dot3,dot4;
     private FragmentManager manager;
-    int i=0;
+    int i=0,k=1;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,null);
         init(view);
         manager = getActivity().getSupportFragmentManager();
+        handler.sendEmptyMessage(0);
+        Log.e("------", "onCreateView:11 ");
         return view;
     }
 
@@ -159,15 +158,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         }
     };
 
-    @Override
+   @Override
     public void onStop() {
         super.onStop();
         handler.removeMessages(0);
     }
 
-    @Override
+ /*   @Override
     public void onStart() {
         super.onStart();
         handler.sendEmptyMessage(0);
-    }
+    }*/
+
+
 }

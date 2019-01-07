@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/add_shop_ll"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/shop_img"
+            android:src="@mipmap/adgn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:text="安慕希希腊酸奶"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/shop_beginSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="2箱起批"
+                android:textColor="@color/gray"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/close"
+        android:id="@+id/diss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/add_view"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/add_shop_ll"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:id="@+id/add_ll"
+            android:layout_below="@+id/add_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/orange"
+                    android:text="￥"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/shop_Price"
+                    android:textColor="@color/orange"
+                    android:text="36"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/shop_Num"
+                    android:layout_marginLeft="20dp"
+                    android:text="86箱可售"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/shop_buyNum"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/orange"
+                    android:text="两箱购买"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/delete_shopNum"
+                android:background="@color/white"
+                android:src="@mipmap/delete_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/sum_style"
+                android:id="@+id/shop_Sum"
+                android:text="1"
+                android:textSize="20dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+            <ImageButton
+                android:id="@+id/add_shopNum"
+                android:background="@color/white"
+                android:src="@mipmap/add_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+         </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/add_view1"
+        android:layout_below="@+id/add_ll"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    
+    <RelativeLayout
+        android:id="@+id/add_rl"
+        android:layout_below="@+id/add_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginRight="20dp"
+            android:textSize="20dp"
+            android:text="共2箱"
+            android:layout_toLeftOf="@+id/money_tv"
+            android:id="@+id/num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/money_tv"
+            android:textColor="@color/orange"
+            android:layout_alignParentRight="true"
+            android:text="￥32"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_below="@+id/add_rl"
+        android:id="@+id/add_btn"
+        android:background="@drawable/btn_addshop"
+        android:text="加入进货单"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+</RelativeLayout>

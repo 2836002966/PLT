@@ -1,6 +1,5 @@
 package com.example.plb.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.example.plb.OrderActivity;
-import com.example.plb.PersonalActivity;
+import com.example.plb.activity.OrderActivity;
 import com.example.plb.R;
-import com.example.plb.settingActivity;
+import com.example.plb.activity.settingActivity;
 
 /**
  * Created by zhc on 2018/12/27.
