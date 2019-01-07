@@ -1,17 +1,14 @@
 package com.example.plb.activity;
 
-import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +22,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private DetailsDetailsFragment fragmentDetails;
     private TextView textView1,textView2;
     private ImageView imageView;
+    private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +31,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         textView1 = findViewById ( R.id.tvOne );
         textView2 = findViewById ( R.id.tvTwo );
         imageView = findViewById ( R.id.iv_shop );
+        imageButton = findViewById ( R.id.ib_back );
         textView1.setOnClickListener ( this );
         textView2.setOnClickListener ( this );
         imageView.setOnClickListener ( this );
+        imageButton.setOnClickListener ( this );
         fragmentShop  = new DetailsShopFragment ();
         fragmentDetails = new DetailsDetailsFragment ();
         FragmentManager fragmentManager = getSupportFragmentManager ();
@@ -63,6 +63,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.iv_shop:
                 showPopupMenu(imageView);
+                break;
+            case R.id.ib_back:
+                finish ();
                 break;
         }
         transaction.commit ();
