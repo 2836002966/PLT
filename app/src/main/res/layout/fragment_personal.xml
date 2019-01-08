@@ -33,7 +33,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/subscription"
+            android:id="@+id/rl_subscription"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_below="@id/rl_title"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:layout_below="@id/subscription">
+            android:layout_below="@id/rl_subscription">
 
             <TextView
                 android:layout_width="wrap_content"

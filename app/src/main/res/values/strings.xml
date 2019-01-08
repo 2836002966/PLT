@@ -13,5 +13,12 @@
     <string name="total">合计：</string>
     <string name="delete">删除</string>
     <string name="firm_order">确认订单</string>
+    <string name="myOrder">我的订单</string>
+    <string name="stayPayment">待付款</string>
+    <string name="hasPayment">已付款</string>
+    <string name="hasComplete">已完成</string>
     <string name="title_activity_firm_order">FirmOrder</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

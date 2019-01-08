@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.plb.activity.LoginPageActivity;
 import com.example.plb.activity.OrderActivity;
 import com.example.plb.R;
-import com.example.plb.activity.settingActivity;
+import com.example.plb.activity.SettingActivity;
 
 /**
  * Created by zhc on 2018/12/27.
@@ -34,8 +35,10 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
     private void init() {
         RelativeLayout rl_myOrder = view.findViewById(R.id.rl_myOrder);
         RelativeLayout rl_setting = view.findViewById(R.id.rl_setting);
+        RelativeLayout rl_subscription = view.findViewById(R.id.rl_subscription);
         rl_myOrder.setOnClickListener(this);
         rl_setting.setOnClickListener(this);
+        rl_subscription.setOnClickListener(this);
     }
 
 
@@ -46,7 +49,10 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
                 startActivity(new Intent(getActivity(), OrderActivity.class));
                 break;
             case R.id.rl_setting:
-                startActivity(new Intent(getActivity(), settingActivity.class));
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+                break;
+            case R.id.rl_subscription:
+                startActivity(new Intent(getActivity(), LoginPageActivity.class));
                 break;
         }
     }

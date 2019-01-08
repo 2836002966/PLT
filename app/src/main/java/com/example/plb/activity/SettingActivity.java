@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.example.plb.R;
 
-public class settingActivity extends AppCompatActivity implements View.OnClickListener{
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
