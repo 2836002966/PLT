@@ -30,7 +30,7 @@ public class GuideActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what==0){
-                jump.setText(j+"跳转");
+                jump.setText(j+" 跳转");
                 j-=1;
                 if (j>=0) {
                     handler.sendEmptyMessageDelayed(0, 1000);
