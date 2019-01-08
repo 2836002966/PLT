@@ -8,7 +8,7 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange">
+        android:background="#eb4f38">
         <FrameLayout
             android:id="@+id/frame1"
             android:paddingLeft="15dp"

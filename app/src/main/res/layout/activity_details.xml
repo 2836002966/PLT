@@ -13,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:background="@color/white"
+            android:id="@+id/ib_back"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:src="@mipmap/arrow"
