@@ -55,14 +55,7 @@ public class ShopFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_shop,null);
-        button = view.findViewById ( R.id.btn_shop );
-        button.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent ( getActivity (), DetailsActivity.class );
-                startActivity ( intent );
-            }
-        } );
+
         listView=view.findViewById(R.id.list_view);
         mAdapter=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,datas);
         listView.setAdapter(mAdapter);
