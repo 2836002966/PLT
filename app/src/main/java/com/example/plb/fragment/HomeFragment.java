@@ -68,8 +68,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         dot2.setOnClickListener(this);
         dot3.setOnClickListener(this);
         dot4.setOnClickListener(this);
-        adapter = new MyAdapter(getActivity().getSupportFragmentManager(),fragments);
-        adapter_hot=new MyAdapter(getActivity().getSupportFragmentManager(),fragments_hot);
+        adapter = new MyAdapter(getChildFragmentManager(),fragments);
+        adapter_hot=new MyAdapter(getChildFragmentManager(),fragments_hot);
         viewPager.setAdapter(adapter);
         viewPager_hot.setAdapter(adapter_hot);
 

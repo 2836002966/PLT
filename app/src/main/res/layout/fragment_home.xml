@@ -9,17 +9,19 @@
        <LinearLayout
            android:id="@+id/title_home"
            android:layout_width="match_parent"
-           android:layout_height="40dp"
+           android:layout_height="?attr/actionBarSize"
            android:background="@color/colorPrimary"
            android:gravity="center_vertical">
-           <ImageButton
-               android:layout_width="10dp"
-               android:layout_height="10dp"
+           <ImageView
+               android:layout_marginTop="10dp"
+               android:layout_width="15dp"
+               android:layout_height="20dp"
                android:background="@mipmap/location_white"/>
            <TextView
                android:id="@+id/adr_home"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
                android:text="五一市场"
                android:textColor="@color/white"
                android:textSize="17sp"
@@ -28,13 +30,12 @@
                android:id="@+id/tv_search_home"
                android:layout_width="wrap_content"
                android:layout_height="30dp"
-               android:layout_gravity="center_vertical"
                android:layout_marginRight="10dp"
+               android:layout_marginTop="10dp"
                android:layout_weight="1"
                android:background="@drawable/search_home"
                android:drawableLeft="@mipmap/search"
                android:drawablePadding="10dp"
-               android:gravity="center_vertical"
                android:padding="5dp"
                android:text="蓝月亮黄金套装七折起"
                android:textSize="13sp" />
@@ -44,13 +45,13 @@
        <android.support.v4.view.ViewPager
            android:id="@+id/viewPager1"
            android:layout_width="match_parent"
-           android:layout_height="200dp"
+           android:layout_height="150dp"
            android:layout_below="@+id/title_home"
            />
 
        <LinearLayout
            android:id="@+id/dot"
-           android:layout_marginTop="180dp"
+           android:layout_marginTop="150dp"
            android:orientation="horizontal"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -84,48 +85,46 @@
                android:src="@mipmap/dot_2"/>
        </LinearLayout>
 
-       <RelativeLayout
-           android:id="@+id/action_home"
-           android:layout_width="match_parent"
-           android:layout_height="30dp"
-           android:layout_below="@+id/viewPager1"
-           android:gravity="center_vertical">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="特价商品"
-               android:textSize="17sp"
-               android:paddingLeft="30dp"
-               android:layout_alignParentLeft="true"/>
+    <RelativeLayout
+        android:id="@+id/kh_home"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/viewPager1"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吃货复苏季"
+            android:textSize="17sp"
+            android:paddingLeft="30dp"
+            android:textColor="@color/black"
+            android:layout_alignParentLeft="true"/>
+    </RelativeLayout>
 
-           <TextView
-               android:id="@+id/action_more"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_alignParentRight="true"
-               android:layout_marginTop="4dp"
-               android:paddingRight="20dp"
-               android:text="更多 >"
-               android:textSize="15sp" />
-
-           <View
-               android:layout_height="1px"
-               android:layout_width="match_parent"
-               android:background="@color/line_home"
-               android:layout_alignParentBottom="true"
-               />
-
-       </RelativeLayout>
-
-
-       <GridLayout
-           android:id="@+id/tejia_home"
+       <LinearLayout
+           android:id="@+id/kh_ph_home"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:rowCount="2"
-           android:columnCount="3"
-           android:layout_below="@+id/action_home"
+           android:layout_below="@id/kh_home"
+           android:orientation="vertical"
            >
+           <ImageView
+               android:layout_weight="1"
+               android:layout_width="wrap_content"
+               android:layout_height="100dp"
+               android:background="@mipmap/banner3"
+               />
+
+           <GridLayout
+               android:layout_marginTop="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:rowCount="1"
+               android:columnCount="3"
+               android:layout_below="@+id/action_home"
+               >
 
            <LinearLayout
                android:layout_width="wrap_content"
@@ -199,12 +198,138 @@
                    android:layout_height="100dp"
                    android:background="@mipmap/ls"/>
            </LinearLayout>
+           </GridLayout>
+           <View
+               android:layout_height="1px"
+               android:layout_width="match_parent"
+               android:background="@color/line_home"
+               android:layout_alignParentBottom="true"
+               />
+       </LinearLayout>
+
+       <RelativeLayout
+           android:id="@+id/action_home"
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_marginTop="10dp"
+           android:layout_below="@+id/kh_ph_home"
+           android:gravity="center_vertical">
+           <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="特价商品"
+           android:textSize="17sp"
+           android:paddingLeft="30dp"
+           android:layout_alignParentLeft="true"/>
+
+           <TextView
+               android:id="@+id/action_more"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_marginTop="4dp"
+               android:paddingRight="20dp"
+               android:text="更多 >"
+               android:textSize="15sp" />
+
+           <View
+               android:layout_height="1px"
+               android:layout_width="match_parent"
+               android:background="@color/line_home"
+               android:layout_alignParentBottom="true"
+               />
+
+       </RelativeLayout>
+
+
+       <GridLayout
+       android:id="@+id/tejia_home"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:rowCount="2"
+       android:columnCount="3"
+       android:layout_below="@+id/action_home"
+       >
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="5dp"
+           android:orientation="vertical"
+           android:layout_rowWeight="1"
+           android:layout_columnWeight="1"
+           android:layout_gravity="center"
+           android:gravity="center"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="水和乳饮"
+               android:textColor="@color/black"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="满800返16"/>
+           <ImageView
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:background="@mipmap/hn"/>
+       </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="5dp"
+               android:orientation="vertical"
+               android:layout_rowWeight="1"
+               android:layout_columnWeight="1"
+               android:layout_gravity="center"
+               android:gravity="center">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="粮油副食"
+                   android:textColor="@color/black"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="满800返16"/>
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:background="@mipmap/jly"/>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="5dp"
+               android:orientation="vertical"
+               android:layout_rowWeight="1"
+               android:layout_columnWeight="1"
+               android:layout_gravity="center"
+               android:gravity="center">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="休闲食品"
+                   android:textColor="@color/black"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="秒杀5折"/>
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:background="@mipmap/ls"/>
+           </LinearLayout>
 
 
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
+               android:layout_marginTop="10dp"
                android:orientation="vertical"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
@@ -229,6 +354,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
+               android:layout_marginTop="10dp"
                android:orientation="vertical"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
@@ -253,6 +379,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
+               android:layout_marginTop="10dp"
                android:orientation="vertical"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
@@ -314,9 +441,26 @@
        <android.support.v4.view.ViewPager
            android:id="@+id/viewPager2"
            android:layout_width="match_parent"
-           android:layout_height="200dp"
+           android:layout_height="100dp"
            android:layout_below="@+id/hot_home"
            />
+
+       <RelativeLayout
+           android:id="@+id/recommend_home"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           android:layout_marginTop="10dp"
+           android:layout_below="@+id/viewPager2"
+           android:gravity="center"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="----·推荐店铺·----"
+               android:textSize="17sp"
+               android:textColor="@color/black"
+               />
+       </RelativeLayout>
    </RelativeLayout>
 
 </ScrollView>
