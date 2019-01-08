@@ -117,4 +117,14 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+   <!-- 测试 调转到详情页-->
+    <Button
+        android:id="@+id/btntest"
+        android:textColor="@color/black"
+        android:text="跳转到详情页"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

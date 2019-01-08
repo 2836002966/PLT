@@ -55,7 +55,15 @@ public class ShopFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_shop,null);
-
+        //跳转到详情页
+        button = view.findViewById ( R.id.btntest );
+        button.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent ( getActivity (),DetailsActivity.class );
+                startActivity ( intent );
+            }
+        } );
         listView=view.findViewById(R.id.list_view);
         mAdapter=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,datas);
         listView.setAdapter(mAdapter);

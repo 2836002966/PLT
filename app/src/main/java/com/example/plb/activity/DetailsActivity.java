@@ -71,7 +71,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         transaction.commit ();
     }
 
-
     private void showPopupMenu(View view) {
         // View当前PopupMenu显示的相对View的位置
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -93,6 +92,5 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         });
         popupMenu.show();
     }
-
 
 }
