@@ -39,8 +39,10 @@
             android:name=".activity.LoginPageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".activity.commodity" />
-        <activity android:name=".activity.RegisteredActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".activity.RegisteredActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.StoreCertificationActivity"></activity>
     </application>
 
 </manifest>

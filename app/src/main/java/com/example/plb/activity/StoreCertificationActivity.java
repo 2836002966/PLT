@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.example.plb.R;
 
 public class StoreCertificationActivity extends AppCompatActivity implements View.OnClickListener{
-   private ImageView iv_exit;
+    private ImageView iv_exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +20,9 @@ public class StoreCertificationActivity extends AppCompatActivity implements Vie
         ActionBarTitle();
         init();
     }
-
     private void init(){
         iv_exit = findViewById(R.id.iv_exit);
         iv_exit.setOnClickListener(this);
-
     }
 
     @Override
@@ -33,10 +31,9 @@ public class StoreCertificationActivity extends AppCompatActivity implements Vie
             case R.id.iv_exit:
                 finish();
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
-
     }
     private void ActionBarTitle(){
         ActionBar actionBar = getSupportActionBar();

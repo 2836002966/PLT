@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.plb.activity.StoreCertificationActivity;
 import com.example.plb.activity.LoginPageActivity;
 import com.example.plb.activity.OrderActivity;
 import com.example.plb.R;
 import com.example.plb.activity.SettingActivity;
-import com.example.plb.activity.StoreCertificationActivity;
 
 /**
  * Created by zhc on 2018/12/27.
@@ -62,6 +62,7 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.rl_collection:
                 startActivity(new Intent(getActivity(), StoreCertificationActivity.class));
+                break;
                 default:
                     break;
         }
