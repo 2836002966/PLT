@@ -41,7 +41,10 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
         rl_subscription.setOnClickListener(this);
     }
 
-
+    /**
+     * 设置监听
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){

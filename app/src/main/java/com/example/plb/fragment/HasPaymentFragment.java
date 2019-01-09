@@ -17,7 +17,6 @@ public class HasPaymentFragment extends Fragment {
 
 
     public HasPaymentFragment() {
-        // Required empty public constructor
     }
 
 

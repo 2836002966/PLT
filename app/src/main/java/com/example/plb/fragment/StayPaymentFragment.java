@@ -17,7 +17,6 @@ public class StayPaymentFragment extends Fragment {
 
 
     public StayPaymentFragment() {
-        // Required empty public constructor
     }
 
 

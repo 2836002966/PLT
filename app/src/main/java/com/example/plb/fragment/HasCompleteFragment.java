@@ -17,7 +17,6 @@ public class HasCompleteFragment extends Fragment {
 
 
     public HasCompleteFragment() {
-        // Required empty public constructor
     }
 
 

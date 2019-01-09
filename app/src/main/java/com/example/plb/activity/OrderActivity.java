@@ -18,6 +18,9 @@ import com.example.plb.fragment.StayPaymentFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 我的订单
+ */
 public class OrderActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tv_stayPayment, tv_hasPayment, tv_hasComplete;
