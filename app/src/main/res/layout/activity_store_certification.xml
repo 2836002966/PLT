@@ -159,7 +159,8 @@
         android:layout_marginTop="10dp"
         android:layout_width="330dp"
         android:layout_height="260dp"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        >
 
         <RelativeLayout
             android:layout_width="150dp"

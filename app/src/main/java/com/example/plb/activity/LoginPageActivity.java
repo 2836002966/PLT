@@ -31,6 +31,7 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
             case R.id.registered:
                 startActivity(new Intent(LoginPageActivity.this, RegisteredActivity.class));
                 break;
+
         }
     }
 }

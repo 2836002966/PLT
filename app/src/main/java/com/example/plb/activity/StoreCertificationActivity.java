@@ -24,6 +24,7 @@ public class StoreCertificationActivity extends AppCompatActivity implements Vie
     private void init(){
         iv_exit = findViewById(R.id.iv_exit);
         iv_exit.setOnClickListener(this);
+
     }
 
     @Override
