@@ -14,6 +14,7 @@ import com.example.plb.activity.LoginPageActivity;
 import com.example.plb.activity.OrderActivity;
 import com.example.plb.R;
 import com.example.plb.activity.SettingActivity;
+import com.example.plb.activity.StoreCertificationActivity;
 
 /**
  * Created by zhc on 2018/12/27.
@@ -36,9 +37,11 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
         RelativeLayout rl_myOrder = view.findViewById(R.id.rl_myOrder);
         RelativeLayout rl_setting = view.findViewById(R.id.rl_setting);
         RelativeLayout rl_subscription = view.findViewById(R.id.rl_subscription);
+        RelativeLayout rl_collection = view.findViewById(R.id.rl_collection);
         rl_myOrder.setOnClickListener(this);
         rl_setting.setOnClickListener(this);
         rl_subscription.setOnClickListener(this);
+        rl_collection.setOnClickListener(this);
     }
 
     /**
@@ -57,6 +60,10 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_subscription:
                 startActivity(new Intent(getActivity(), LoginPageActivity.class));
                 break;
+            case R.id.rl_collection:
+                startActivity(new Intent(getActivity(), StoreCertificationActivity.class));
+                default:
+                    break;
         }
     }
 }

@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.plb.R;
@@ -30,6 +31,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private HasCompleteFragment hasCompleteFragment;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
+    private ImageView iv_exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,10 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         initUI();
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
         vp_viewPager.setOffscreenPageLimit(4);  //ViewPager的缓存为4帧
-        vp_viewPager.setAdapter(mFragmentAdapter);
+        vp_viewPager.setAdapter(mFragmentAdapter);  //开启适配器
         vp_viewPager.setCurrentItem(0); //初始设置ViewPager选中第一帧
-        tv_stayPayment.setTextColor(Color.parseColor("#ffffff"));
-        tv_stayPayment.setBackgroundColor(Color.parseColor("#ed6a1a"));
+        tv_stayPayment.setTextColor(Color.parseColor("#ffffff"));  //选中第一个颜色的字体
+        tv_stayPayment.setBackgroundColor(Color.parseColor("#ed6a1a"));  //选中第一个颜色的背景
         //ViewPager的监听事件
         vp_viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -70,9 +72,11 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         tv_hasPayment = findViewById(R.id.tv_hasPayment);
         tv_hasComplete = findViewById(R.id.tv_hasComplete);
         vp_viewPager = findViewById(R.id.vp_viewPager);
+        iv_exit = findViewById(R.id.iv_exit);
         tv_stayPayment.setOnClickListener(this);
         tv_hasPayment.setOnClickListener(this);
         tv_hasComplete.setOnClickListener(this);
+        iv_exit.setOnClickListener(this);
         stayPaymentFragment = new StayPaymentFragment();
         hasPaymentFragment = new HasPaymentFragment();
         hasCompleteFragment = new HasCompleteFragment();
@@ -97,6 +101,11 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             case R.id.tv_hasComplete:
                 vp_viewPager.setCurrentItem(2, true);
                 break;
+            case R.id.iv_exit:
+                finish();
+                break;
+                default:
+                    break;
         }
     }
 
