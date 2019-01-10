@@ -45,10 +45,9 @@ public class ShopFragment extends Fragment{
 
     public static int mPosition;
     //gridview
-    private GridView gridView;
-    private List<Map<String,Object>> dataList;
+    private GridView gridView,gridView1,gridView2;
+    private List<Map<String,Object>> dataList,dataLists,getDataList;
     private SimpleAdapter simpleAdapter;
-
 
 
     @Nullable
@@ -56,7 +55,7 @@ public class ShopFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_shop,null);
         //跳转到详情页
-        button = view.findViewById ( R.id.btntest );
+       button = view.findViewById ( R.id.btntest );
         button.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
@@ -71,9 +70,6 @@ public class ShopFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*if(position==0){
-                    Toast.makeText(getContext(),"123", Toast.LENGTH_LONG).show();
-                }*/
                 String data = datas.get(position);
                 Toast.makeText(getContext(),data, Toast.LENGTH_LONG).show();
 
@@ -86,16 +82,20 @@ public class ShopFragment extends Fragment{
         simpleAdapter=new SimpleAdapter(getContext(),dataList,R.layout.gridview_item,from,to);
         gridView=view.findViewById(R.id.gridView);
         gridView.setAdapter(simpleAdapter);
+        inits();
+        simpleAdapter=new SimpleAdapter(getContext(),dataLists,R.layout.gridview_item,from,to);
+        gridView1=view.findViewById(R.id.gridView1);
+        gridView1.setAdapter(simpleAdapter);
 
-
-        //
-
-
+        init3();
+        simpleAdapter=new SimpleAdapter(getContext(),getDataList,R.layout.gridview_item,from,to);
+        gridView2=view.findViewById(R.id.gridView2);
+        gridView2.setAdapter(simpleAdapter);
         return view;
     }
 
     public void init(){
-        int icno[]={R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg};
+        int icno[]={R.mipmap.ym,R.mipmap.ym,R.mipmap.ym,R.mipmap.ym,R.mipmap.ym,R.mipmap.ym};
         String name[]={"AD钙","霸王牛筋","方便面","火腿肠","阿尔卑斯","巧克力"};
         dataList=new ArrayList<Map<String, Object>>();
         for (int i=0;i<icno.length;i++){
@@ -106,6 +106,27 @@ public class ShopFragment extends Fragment{
         }
     }
 
+    public void inits(){
+        int icno[]={R.mipmap.yd,R.mipmap.yd,R.mipmap.yd,R.mipmap.yd,R.mipmap.yd,R.mipmap.yd};
+        String name[]={"核桃","葡萄干","松子","夏威夷果","杏仁","开心果"};
+        dataLists=new ArrayList<Map<String, Object>>();
+        for (int i=0;i<icno.length;i++){
+            Map<String,Object> map=new HashMap<String, Object>();
+            map.put("img",icno[i]);
+            map.put("text",name[i]);
+            dataLists.add(map);
+        }
+    }
 
-
+    public void init3(){
+        int icno[]={R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg,R.mipmap.bg};
+        String name[]={"人参","鹿茸","燕窝","银耳","红枣","鲍鱼"};
+        getDataList=new ArrayList<Map<String, Object>>();
+        for (int i=0;i<icno.length;i++){
+            Map<String,Object> map=new HashMap<String, Object>();
+            map.put("img",icno[i]);
+            map.put("text",name[i]);
+            getDataList.add(map);
+        }
+    }
 }
