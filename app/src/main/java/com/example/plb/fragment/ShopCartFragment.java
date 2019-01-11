@@ -1,5 +1,6 @@
 package com.example.plb.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plb.R;
+import com.example.plb.activity.FirmOrder;
 import com.example.plb.adapter.ShopCartAdapter;
 import com.example.plb.bean.ShopCartItem;
 
@@ -112,7 +114,8 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.settlement:
-                Toast.makeText(getContext(),"您还没有选择商品哦！",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), FirmOrder.class);
+                startActivity(intent);
                 break;
             case R.id.delete:
                 Toast.makeText(getContext(),"您还没有选择商品哦！",Toast.LENGTH_SHORT).show();
