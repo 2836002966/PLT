@@ -181,7 +181,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 i=3;
                 break;
             case R.id.action_more:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                Intent intent = new Intent(getActivity(), ProductInfoActivity.class);
+                intent.putExtra("actionMore","actionMore");
+                startActivity(intent);
                 break;
             case R.id.hot_more:
                 startActivity(new Intent(getActivity(), ProductInfoActivity.class));

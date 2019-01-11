@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.plb.R;
+import com.example.plb.bean.HomeToShop;
 import com.example.plb.bean.ProductInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductInfoActivity extends Activity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
+public class ProductInfoActivity extends Activity implements Serializable,View.OnClickListener,AdapterView.OnItemSelectedListener{
     private ListView mProListView;  //商品的Listview
     private List<ProductInfo> productInfoList = new ArrayList<>();  //商品数据
     private MyProductInfoAdapter myProductInfoAdapter;              //商品信息适配器
@@ -136,15 +139,15 @@ public class ProductInfoActivity extends Activity implements View.OnClickListene
                                 ,"123",Toast.LENGTH_SHORT).show();
                     }
                 });
-                //点击显示商品详情/传值
+
                 holder.mProDataLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //点击显示商品详情/传值
+                        HomeToShop homeToShop = new HomeToShop(holder.getShopName(),holder.getMarket());
                         Intent intent = new Intent(ProductInfoActivity.this
                                 ,DetailsActivity.class);
                         intent.putExtra("id",88888);
-                        intent.putExtra("shopName",holder.getShopName());
-                        intent.putExtra("shopMarket",holder.getMarket());
                         startActivity(intent);
                     }
                 });

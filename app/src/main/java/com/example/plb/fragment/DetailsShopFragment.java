@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.plb.activity.AddShopPopupwindow;
 import com.example.plb.R;
+import com.example.plb.bean.HomeToShop;
 
 import static android.content.Intent.getIntent;
 
@@ -42,11 +44,10 @@ public class DetailsShopFragment extends Fragment {
     private void isHandle(){
         int id = getActivity().getIntent().getIntExtra("id",1);
         if (id==88888){
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.rl_shop,this)
-                    .addToBackStack(null)
-                    .commit();
+            HomeToShop homeToShop = new HomeToShop();
+            String str = homeToShop.getShopName();
+
+            Toast.makeText(getContext(),"测试"+str,Toast.LENGTH_SHORT).show();
         }
     }
 
