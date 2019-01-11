@@ -1,5 +1,6 @@
 package com.example.plb.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,8 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.plb.R;
+import com.example.plb.activity.ProductInfoActivity;
 import com.example.plb.adapter.MyAdapter;
 
 import java.util.ArrayList;
@@ -35,6 +39,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private List<Fragment> fragments_hot;
     private ImageView dot1,dot2,dot3,dot4;
     private FragmentManager manager;
+
+    private TextView mActionMore;   //特价商品更多
+    private TextView mHotMore;      //热销商品更多
+    private LinearLayout mShopLayout1;   //特价商品1
+    private LinearLayout mShopLayout2;   //特价商品2
+    private LinearLayout mShopLayout3;   //特价商品3
+    private LinearLayout mShopLayout4;   //特价商品4
+    private LinearLayout mShopLayout5;   //特价商品5
+    private LinearLayout mShopLayout6;   //特价商品6
+    private LinearLayout mShopLayout7;   //特价商品7
+    private LinearLayout mShopLayout8;   //特价商品8
+    private LinearLayout mShopLayout9;   //特价商品9
     int i=0,k=1;
     @Nullable
     @Override
@@ -59,6 +75,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         fragments_hot = new ArrayList<>();
         fragments_hot.add(new HomeFragment_hot_1());
         fragments_hot.add(new HomeFragment_hot_2());
+
+        // 点击进入商品详细介绍页面
+        mShopLayout1 = view.findViewById(R.id.home_shop_layout1);
+        mShopLayout2 = view.findViewById(R.id.home_shop_layout2);
+        mShopLayout3 = view.findViewById(R.id.home_shop_layout3);
+        mShopLayout4 = view.findViewById(R.id.home_shop_layout4);
+        mShopLayout5 = view.findViewById(R.id.home_shop_layout5);
+        mShopLayout6 = view.findViewById(R.id.home_shop_layout6);
+        mShopLayout7 = view.findViewById(R.id.home_shop_layout7);
+        mShopLayout8 = view.findViewById(R.id.home_shop_layout8);
+        mShopLayout9 = view.findViewById(R.id.home_shop_layout9);
+        mActionMore = view.findViewById(R.id.action_more);
+        mHotMore = view.findViewById(R.id.hot_more);
+        mShopLayout1.setOnClickListener(this);
+        mShopLayout2.setOnClickListener(this);
+        mShopLayout3.setOnClickListener(this);
+        mShopLayout4.setOnClickListener(this);
+        mShopLayout5.setOnClickListener(this);
+        mShopLayout6.setOnClickListener(this);
+        mShopLayout7.setOnClickListener(this);
+        mShopLayout8.setOnClickListener(this);
+        mShopLayout9.setOnClickListener(this);
+        mActionMore.setOnClickListener(this);
+        mHotMore.setOnClickListener(this);
 
         dot1 = view.findViewById(R.id.dot1);
         dot2 = view.findViewById(R.id.dot2);
@@ -115,7 +155,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 initImg(R.mipmap.dot_2, R.mipmap.dot_2,
                         R.mipmap.dot_2, R.mipmap.dot_1);
                 break;
-
             default:
                 break;
         }
@@ -140,6 +179,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.dot4:
                 viewPager.setCurrentItem(3);
                 i=3;
+                break;
+            case R.id.action_more:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.hot_more:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout1:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout2:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout3:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout4:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout5:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout6:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout7:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout8:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                break;
+            case R.id.home_shop_layout9:
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
                 break;
         }
         transaction.commit();

@@ -27,7 +27,6 @@
         <activity
             android:name=".activity.DetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.XiangxiProductInfo" />
         <activity android:name=".activity.PersonalActivity" />
         <activity
             android:name=".activity.OrderActivity"
@@ -42,7 +41,12 @@
         <activity
             android:name=".activity.RegisteredActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.StoreCertificationActivity"></activity>
+        <activity android:name=".activity.StoreCertificationActivity">
+        </activity>
+
+        <activity android:name=".activity.ProductInfoActivity">
+        </activity>
+
     </application>
 
 </manifest>

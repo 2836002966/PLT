@@ -127,6 +127,7 @@
                >
 
            <LinearLayout
+               android:id="@+id/home_shop_layout1"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -152,6 +153,7 @@
            </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout2"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -176,6 +178,7 @@
            </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout3"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -252,6 +255,7 @@
        >
 
        <LinearLayout
+           android:id="@+id/home_shop_layout4"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:padding="5dp"
@@ -277,6 +281,7 @@
        </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout5"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -301,6 +306,7 @@
            </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout6"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -326,6 +332,7 @@
 
 
            <LinearLayout
+               android:id="@+id/home_shop_layout7"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -351,6 +358,7 @@
            </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout8"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"
@@ -376,6 +384,7 @@
            </LinearLayout>
 
            <LinearLayout
+               android:id="@+id/home_shop_layout9"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:padding="5dp"

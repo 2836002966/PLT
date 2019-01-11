@@ -45,6 +45,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+
+
     @Override
     public void onClick(View v) {
         FragmentManager fm = getSupportFragmentManager ();

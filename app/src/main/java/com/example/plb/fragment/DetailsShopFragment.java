@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.example.plb.activity.AddShopPopupwindow;
 import com.example.plb.R;
 
+import static android.content.Intent.getIntent;
+
 /**
  * Created by 陈 on 2019/1/2.
  */
@@ -22,6 +24,8 @@ public class DetailsShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate ( R.layout.fragment_details_shop,null );
+        //处理 郑钦文给你发送过来的商品数据
+        isHandle();
         add_shop = view.findViewById (R.id.add_shop );
         add_shop.setOnClickListener ( new View.OnClickListener () {
             @Override
@@ -31,7 +35,19 @@ public class DetailsShopFragment extends Fragment {
                         Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
             }
         } );
+
         return view;
+    }
+
+    private void isHandle(){
+        int id = getActivity().getIntent().getIntExtra("id",1);
+        if (id==88888){
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.rl_shop,this)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
 }
