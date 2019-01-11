@@ -15,11 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.plb.R;
-import com.example.plb.activity.ProductInfoActivity;
 import com.example.plb.adapter.MyAdapter;
 
 import java.util.ArrayList;
@@ -31,32 +30,22 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener{
     private View view;
-    private ViewPager viewPager;
-    private ViewPager viewPager_hot;
-    private MyAdapter adapter;
-    private MyAdapter adapter_hot;
-    private List<Fragment> fragments;
-    private List<Fragment> fragments_hot;
+    private ViewPager viewPager,viewPager_hot;
+    private MyAdapter adapter,adapter_hot;
+    /*private ShopAdapter_home shopAdapter_home;*/
+    private List<Fragment> fragments,fragments_hot;
+    /*private List<Shop_home> datas;*/
     private ImageView dot1,dot2,dot3,dot4;
     private FragmentManager manager;
-
-    private TextView mActionMore;   //特价商品更多
-    private TextView mHotMore;      //热销商品更多
-    private LinearLayout mShopLayout1;   //特价商品1
-    private LinearLayout mShopLayout2;   //特价商品2
-    private LinearLayout mShopLayout3;   //特价商品3
-    private LinearLayout mShopLayout4;   //特价商品4
-    private LinearLayout mShopLayout5;   //特价商品5
-    private LinearLayout mShopLayout6;   //特价商品6
-    private LinearLayout mShopLayout7;   //特价商品7
-    private LinearLayout mShopLayout8;   //特价商品8
-    private LinearLayout mShopLayout9;   //特价商品9
+    /*private ListView listView;*/
+    private TextView action_more,hot_more;
     int i=0,k=1;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,null);
         init(view);
+        setOnlister();
         manager = getActivity().getSupportFragmentManager();
         handler.sendEmptyMessage(0);
         Log.e("------", "onCreateView:11 ");
@@ -66,52 +55,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void init(View view) {
         viewPager = view.findViewById(R.id.viewPager1);
         viewPager_hot=view.findViewById(R.id.viewPager2);
-        fragments = new ArrayList<>();
-        fragments.add(new HomeFragment_1());
-        fragments.add(new HomeFragment_2());
-        fragments.add(new HomeFragment_3());
-        fragments.add(new HomeFragment_4());
-
-        fragments_hot = new ArrayList<>();
-        fragments_hot.add(new HomeFragment_hot_1());
-        fragments_hot.add(new HomeFragment_hot_2());
-
-        // 点击进入商品详细介绍页面
-        mShopLayout1 = view.findViewById(R.id.home_shop_layout1);
-        mShopLayout2 = view.findViewById(R.id.home_shop_layout2);
-        mShopLayout3 = view.findViewById(R.id.home_shop_layout3);
-        mShopLayout4 = view.findViewById(R.id.home_shop_layout4);
-        mShopLayout5 = view.findViewById(R.id.home_shop_layout5);
-        mShopLayout6 = view.findViewById(R.id.home_shop_layout6);
-        mShopLayout7 = view.findViewById(R.id.home_shop_layout7);
-        mShopLayout8 = view.findViewById(R.id.home_shop_layout8);
-        mShopLayout9 = view.findViewById(R.id.home_shop_layout9);
-        mActionMore = view.findViewById(R.id.action_more);
-        mHotMore = view.findViewById(R.id.hot_more);
-        mShopLayout1.setOnClickListener(this);
-        mShopLayout2.setOnClickListener(this);
-        mShopLayout3.setOnClickListener(this);
-        mShopLayout4.setOnClickListener(this);
-        mShopLayout5.setOnClickListener(this);
-        mShopLayout6.setOnClickListener(this);
-        mShopLayout7.setOnClickListener(this);
-        mShopLayout8.setOnClickListener(this);
-        mShopLayout9.setOnClickListener(this);
-        mActionMore.setOnClickListener(this);
-        mHotMore.setOnClickListener(this);
+        /*listView=view.findViewById(R.id.listview_home);*/
+        action_more=view.findViewById(R.id.action_more);
+        hot_more=view.findViewById(R.id.hot_more);
 
         dot1 = view.findViewById(R.id.dot1);
         dot2 = view.findViewById(R.id.dot2);
         dot3 = view.findViewById(R.id.dot3);
         dot4 = view.findViewById(R.id.dot4);
-        dot1.setOnClickListener(this);
-        dot2.setOnClickListener(this);
-        dot3.setOnClickListener(this);
-        dot4.setOnClickListener(this);
+
+        fragments = new ArrayList<>();
+        fragments.add(new HomeFragment_1());
+        fragments.add(new HomeFragment_2());
+        fragments.add(new HomeFragment_3());
+        fragments.add(new HomeFragment_4());
+        fragments_hot = new ArrayList<>();
+        fragments_hot.add(new HomeFragment_hot_1());
+        fragments_hot.add(new HomeFragment_hot_2());
+
+
+
         adapter = new MyAdapter(getChildFragmentManager(),fragments);
         adapter_hot=new MyAdapter(getChildFragmentManager(),fragments_hot);
+        /*shopAdapter_home=new ShopAdapter_home(getContext(),datas);*/
+        /*listView.setAdapter(shopAdapter_home);*/
         viewPager.setAdapter(adapter);
         viewPager_hot.setAdapter(adapter_hot);
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -131,6 +101,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
         });
     }
+
+    private void setOnlister() {
+        dot1.setOnClickListener(this);
+        dot2.setOnClickListener(this);
+        dot3.setOnClickListener(this);
+        dot4.setOnClickListener(this);
+    }
+
     private void initImg(int...index){
         dot1.setImageResource(index[0]);
         dot2.setImageResource(index[1]);
@@ -155,6 +133,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 initImg(R.mipmap.dot_2, R.mipmap.dot_2,
                         R.mipmap.dot_2, R.mipmap.dot_1);
                 break;
+
             default:
                 break;
         }
@@ -179,39 +158,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.dot4:
                 viewPager.setCurrentItem(3);
                 i=3;
-                break;
-            case R.id.action_more:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.hot_more:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout1:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout2:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout3:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout4:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout5:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout6:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout7:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout8:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
-            case R.id.home_shop_layout9:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
                 break;
         }
         transaction.commit();

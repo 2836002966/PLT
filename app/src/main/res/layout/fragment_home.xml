@@ -11,7 +11,9 @@
            android:layout_width="match_parent"
            android:layout_height="?attr/actionBarSize"
            android:background="@color/colorPrimary"
-           android:gravity="center_vertical">
+           android:gravity="center_vertical"
+           android:focusable="true"
+           android:focusableInTouchMode="true">
            <ImageView
                android:layout_marginTop="10dp"
                android:layout_width="15dp"
@@ -26,7 +28,7 @@
                android:textColor="@color/white"
                android:textSize="17sp"
                />
-           <TextView
+           <EditText
                android:id="@+id/tv_search_home"
                android:layout_width="wrap_content"
                android:layout_height="30dp"
@@ -37,8 +39,9 @@
                android:drawableLeft="@mipmap/search"
                android:drawablePadding="10dp"
                android:padding="5dp"
-               android:text="蓝月亮黄金套装七折起"
-               android:textSize="13sp" />
+               android:hint="蓝月亮黄金套装七折起"
+               android:textSize="13sp"
+               />
        </LinearLayout>
 
 
@@ -110,12 +113,12 @@
            android:layout_below="@id/kh_home"
            android:orientation="vertical"
            >
+
            <ImageView
-               android:layout_weight="1"
                android:layout_width="wrap_content"
                android:layout_height="100dp"
-               android:background="@mipmap/banner3"
-               />
+               android:layout_weight="1"
+               android:background="@mipmap/banner3" />
 
            <GridLayout
                android:layout_marginTop="10dp"
@@ -470,6 +473,12 @@
                android:textColor="@color/black"
                />
        </RelativeLayout>
+
+       <ListView
+           android:id="@+id/listview_home"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/recommend_home"/>
    </RelativeLayout>
 
 </ScrollView>
