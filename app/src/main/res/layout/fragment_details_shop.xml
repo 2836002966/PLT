@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <TextView
+        style="@style/shop_attention"
         android:id="@+id/details_shop_name"
         android:layout_below="@+id/view"
         android:layout_width="match_parent"

@@ -123,7 +123,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onPageSelected(int j) {
                 switchImage(j);
-               i=j;
+                i=j;
             }
 
             @Override
@@ -181,6 +181,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 viewPager.setCurrentItem(3);
                 i=3;
                 break;
+
             case R.id.action_more:
                 intent = new Intent(getActivity(), ProductInfoActivity.class);
                 intent.putExtra("actionMore","actionMore");
@@ -226,14 +227,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 if (i>3){
                     i=0;
                 }
-               viewPager.setCurrentItem(i);
+                viewPager.setCurrentItem(i);
                 i++;
                 handler.sendEmptyMessageDelayed(0,2000);
             }
         }
     };
 
-   @Override
+    @Override
     public void onStop() {
         super.onStop();
         handler.removeMessages(0);

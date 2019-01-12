@@ -1,5 +1,7 @@
 package com.example.plb.activity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,12 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
+        //得到当前界面的装饰视图
+        if(Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            //设置状态栏颜色为透明
+            getWindow().setStatusBarColor(getResources ().getColor (R.color.orange ));
+        }
         setContentView ( R.layout.activity_details );
         textView1 = findViewById ( R.id.tvOne );
         textView2 = findViewById ( R.id.tvTwo );
@@ -42,7 +50,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         FragmentTransaction transaction = fragmentManager.beginTransaction ();
         transaction.replace ( R.id.rl_shop,fragmentShop );
         transaction.commit ();
-
     }
 
 
@@ -73,6 +80,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         transaction.commit ();
     }
 
+
+    //状态栏菜单
     private void showPopupMenu(View view) {
         // View当前PopupMenu显示的相对View的位置
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -83,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                return false;
+                return false; 
             }
         });
         // PopupMenu关闭事件

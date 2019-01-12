@@ -61,7 +61,6 @@ public class ShopFragment extends Fragment{
             public void onClick(View v) {
                 Intent intent = new Intent ( getActivity (),DetailsActivity.class );
                 startActivity ( intent );
-
             }
         } );
         listView=view.findViewById(R.id.list_view);
