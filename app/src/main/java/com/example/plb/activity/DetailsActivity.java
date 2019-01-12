@@ -50,7 +50,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         FragmentTransaction transaction = fragmentManager.beginTransaction ();
         transaction.replace ( R.id.rl_shop,fragmentShop );
         transaction.commit ();
-
     }
 
 

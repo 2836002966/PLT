@@ -103,7 +103,6 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.iv_exit:
                 finish();
-
                 break;
                 default:
                     break;
