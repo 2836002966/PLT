@@ -69,8 +69,8 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_dataManagement:
                 startActivity(new Intent(getActivity(), InformationActivity.class));
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
 }
