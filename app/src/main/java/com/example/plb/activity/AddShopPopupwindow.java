@@ -66,7 +66,7 @@ public class AddShopPopupwindow extends PopupWindow{
         //设置PopupWindow可触摸
         this.setTouchable(true);
         //设置SelectPicPopupWindow弹出窗体动画效果
-//    this.setAnimationStyle(R.style.select_anim);
+        // this.setAnimationStyle(R.style.select_anim);
         //实例化一个ColorDrawable颜色为半透明
         ColorDrawable dw = new ColorDrawable(0x00000000);
         //设置SelectPicPopupWindow弹出窗体的背景

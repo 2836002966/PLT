@@ -1,12 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/Details_bg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/tv"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="1dp"
+            android:background="@color/Details_solid"
+            />
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/tv"
+            android:textColor="@color/Details_text"
+            android:text="宝贝详情"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/Details_solid"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
 
     <TextView
-        android:textColor="#000000"
-        android:text="777"
-        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:text="娃哈哈AD钙奶"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/wahaha1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/wahaha2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/wahaha3" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/wahaha4" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@mipmap/wahaha5" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -10,5 +10,7 @@
     <color name="gray">#717171</color>
     <color name="black">#000000</color>
     <color name="line_home">#eae8e8</color>
-
+    <color name="Details_bg">#eeeeee</color>
+    <color name="Details_text">#666666</color>
+    <color name="Details_solid">#d3d3d3</color>
 </resources>

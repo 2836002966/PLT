@@ -146,7 +146,7 @@
         <TextView
             android:layout_marginRight="20dp"
             android:textSize="20dp"
-            android:text="共2箱"
+            android:text="共1箱"
             android:layout_toLeftOf="@+id/money_tv"
             android:id="@+id/num_tv"
             android:layout_width="wrap_content"
