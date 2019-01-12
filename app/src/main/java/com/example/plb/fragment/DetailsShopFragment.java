@@ -26,8 +26,10 @@ public class DetailsShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate ( R.layout.fragment_details_shop,null );
+
         //处理 郑钦文给你发送过来的商品数据
         isHandle();
+
         add_shop = view.findViewById (R.id.add_shop );
         add_shop.setOnClickListener ( new View.OnClickListener () {
             @Override

@@ -1,19 +1,28 @@
 package com.example.plb.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -35,11 +44,22 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
     private Context mContext;       //当前上下文
     private EditText mEditSearch;   //搜索框
     private ImageButton mBackBtn;   //返回
+    private ImageButton mShoppingCar;         //购物车
     private LinearLayout mShaiXuanLayout;     //筛选
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            //让应用主题内容占用系统状态栏的空间,注意:下面两个参数必须一起使用 stable 牢固的
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            //设置状态栏颜色为透明
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
         setContentView(R.layout.activity_product_info);
         mContext = this;
 
@@ -48,8 +68,11 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private void init(){
         mEditSearch = findViewById(R.id.search);
+        mShoppingCar = findViewById(R.id.shopping_car_btn);
+        mShoppingCar.setOnClickListener(this);
         mBackBtn = findViewById(R.id.back_btn);
         mBackBtn.setOnClickListener(this);
         mShaiXuanLayout = findViewById(R.id.shaixuan);
@@ -70,9 +93,9 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
     private void initData(){
         //添加商品数据
         for (int i=0;i<4;i++){
-            productInfoList.add(new ProductInfo("哇哈哈",2,false,2,"五一市场"));
-            productInfoList.add(new ProductInfo("快线营养",10,false,4,"六一市场"));
-            productInfoList.add(new ProductInfo("粤利粤",20,true,8,"七一市场"));
+            productInfoList.add(new ProductInfo(R.mipmap.wahaha,"哇哈哈",2,false,2,"五一市场"));
+            productInfoList.add(new ProductInfo(R.mipmap.hn,"快线营养",10,false,4,"六一市场"));
+            productInfoList.add(new ProductInfo(R.mipmap.ala,"粤利粤",20,true,8,"七一市场"));
         }
     }
 
@@ -84,6 +107,8 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
                 break;
             case R.id.shaixuan:
                 openShaiXuan();
+                break;
+            case R.id.shopping_car_btn:
                 break;
         }
     }
@@ -135,8 +160,18 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
                 holder.mProImageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                            View bigView = LayoutInflater.from(mContext)
+                                .inflate(R.layout.item_productinfo_big_image,null);
+                        ImageView imageView = bigView.findViewById(R.id.big_show);
+                        imageView.setImageResource(holder.getProImageButtonPath());
+                        Log.d("888", imageView.toString());
+
+                        Dialog dialog = new Dialog(ProductInfoActivity.this);
+                        dialog.setContentView(bigView);
+                        dialog.show();
                         Toast.makeText(ProductInfoActivity.this
-                                ,"123",Toast.LENGTH_SHORT).show();
+                                ,holder.getProImageButtonPath()
+                                ,Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -144,22 +179,23 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
                     @Override
                     public void onClick(View v) {
                         //点击显示商品详情/传值
-                        HomeToShop homeToShop = new HomeToShop(holder.getShopName(),holder.getMarket());
                         Intent intent = new Intent(ProductInfoActivity.this
                                 ,DetailsActivity.class);
-                        intent.putExtra("id",88888);
-                        startActivity(intent);
+                        intent.putExtra("shopName",holder.getShopName());
+                        intent.putExtra("market",holder.getMarket());
+                        startActivityForResult(intent,88888);
                     }
                 });
 
                 //给显示商品模块的各项控件设值
+                holder.mProImageButton.setBackgroundResource(holder.getProImageButtonPath());
+                holder.mShopName.setText(holder.getShopName()+"");
+                holder.mMinNum.setText(holder.getMinNum()+"");
                 if(!holder.isShowJK()){
                     holder.mJinKouImage.setVisibility(View.INVISIBLE);
                 }else {
                     holder.mJinKouImage.setVisibility(View.VISIBLE);
                 }
-                holder.mShopName.setText(holder.getShopName()+"");
-                holder.mMinNum.setText(holder.getMinNum()+"");
                 holder.mDanjia.setText(holder.getDanjia()+"");
                 holder.mMarket.setText(holder.getMarket()+"");
                 

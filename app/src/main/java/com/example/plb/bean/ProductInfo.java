@@ -12,28 +12,37 @@ import android.widget.TextView;
 public class ProductInfo {
 
     public RelativeLayout mProDataLayout;
-    public ImageButton mProImageButton;
 
     //mProDataLayout（右侧的商品信息块所需的值）
-    private boolean isShowJK;   //是否显示进口图标
+    private int proImageButtonPath;    //按钮的图片路径
     private String shopName;    //商品名
     private int minNum;         //最小购买数量
+    private boolean isShowJK;   //是否显示进口图标
     private int danjia;         //单价
     private String market;      //市场
     //对应以上值的控件
-    public ImageView mJinKouImage;  //进口图标的控件
+    public ImageButton mProImageButton;
     public TextView mShopName;
     public TextView mMinNum;
+    public ImageView mJinKouImage;
     public TextView mDanjia;
     public TextView mMarket;
 
-
-    public ProductInfo(String shopName , int minNum , boolean isShowJK, int danjia , String market) {
+    public ProductInfo(int proImageButtonPath, String shopName , int minNum , boolean isShowJK, int danjia , String market) {
+        this.proImageButtonPath = proImageButtonPath;
         this.shopName = shopName;
         this.minNum = minNum;
         this.isShowJK = isShowJK;
         this.danjia = danjia;
         this.market = market;
+    }
+
+    public int getProImageButtonPath() {
+        return proImageButtonPath;
+    }
+
+    public void setProImageButtonPath(int proImageButtonPath) {
+        this.proImageButtonPath = proImageButtonPath;
     }
 
     public boolean isShowJK() {
