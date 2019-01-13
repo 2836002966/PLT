@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="trade_num">110.0000dp</dimen>
+	<dimen name="trade_height">690.0000dp</dimen>
+	<dimen name="order_height">710.0000dp</dimen>
+</resources>
