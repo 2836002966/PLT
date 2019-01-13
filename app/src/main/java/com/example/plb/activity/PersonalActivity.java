@@ -32,8 +32,6 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     private void init() {
         ImageView iv_exit = findViewById(R.id.iv_exit);
         ImageView iv_image = findViewById(R.id.iv_image);
-        TextView tv_name = findViewById(R.id.tv_name);
-        TextView tv_password = findViewById(R.id.tv_password);
         ImageView iv_order_more = findViewById(R.id.iv_order_more);
         ImageView iv_obligation = findViewById(R.id.iv_obligation);
         ImageView iv_paid = findViewById(R.id.iv_paid);
