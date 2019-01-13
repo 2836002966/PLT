@@ -29,8 +29,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private StayPaymentFragment stayPaymentFragment;
     private HasPaymentFragment hasPaymentFragment;
     private HasCompleteFragment hasCompleteFragment;
-    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-    private FragmentAdapter mFragmentAdapter;
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private FragmentAdapter adapter;
     private ImageView iv_exit;
 
     @Override
@@ -38,14 +38,14 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         initUI();
-        mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-        vp_viewPager.setOffscreenPageLimit(4);  //ViewPager的缓存为4帧
-        vp_viewPager.setAdapter(mFragmentAdapter);  //开启适配器
+        adapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
+        vp_viewPager.setOffscreenPageLimit(2);  //ViewPager的缓存为4帧
+        vp_viewPager.setAdapter(adapter);  //开启适配器
         vp_viewPager.setCurrentItem(0); //初始设置ViewPager选中第一帧
         tv_stayPayment.setTextColor(Color.parseColor("#ffffff"));  //选中第一个颜色的字体
         tv_stayPayment.setBackgroundColor(Color.parseColor("#ed6a1a"));  //选中第一个颜色的背景
         //ViewPager的监听事件
-        vp_viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        vp_viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
 
@@ -103,16 +103,15 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.iv_exit:
                 finish();
-
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
 
     public class FragmentAdapter extends FragmentPagerAdapter{
 
-        List<Fragment> fragmentList = new ArrayList<Fragment>();
+        List<Fragment> fragmentList;
 
         public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
             super(fm);

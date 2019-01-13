@@ -1,5 +1,6 @@
 package com.example.plb.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,16 +9,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plb.R;
 import com.example.plb.activity.FirmOrder;
 import com.example.plb.adapter.ShopCartAdapter;
-import com.example.plb.bean.ShopCartItem;
+import com.example.plb.bean.ShopCartChild;
+import com.example.plb.bean.ShopCartGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,7 @@ import java.util.List;
  * Created by zhc on 2018/12/27.
  * 购物车
  */
-public class ShopCartFragment extends Fragment implements View.OnClickListener{
+public class ShopCartFragment extends Fragment implements View.OnClickListener {
 
     private View view;
     private TextView manager;
@@ -34,19 +36,22 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener{
     private TextView money;
     private Button settlement;
     private Button delete;
-    private List<ShopCartItem> items;
-    private List<Integer> imgs1,imgs2,imgs3;
-    private List<Double> moneys1,moneys2,moneys3;
-    private ListView listView;
+    private Context context;
+    private List<ShopCartGroup> groups;
+    private List<List<ShopCartChild>> childs;
+    private List<ShopCartChild> child1, child2, child3;
+    private ExpandableListView exList;
     private ShopCartAdapter mAdapter;
     private boolean mark = true;
+    private boolean isClisk = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_shopcart,null);
-        initView();
+        view = inflater.inflate(R.layout.fragment_shopcart, null);
+        context = getContext();
         initData();
+        initView();
         return view;
     }
 
@@ -59,52 +64,62 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener{
         settlement.setOnClickListener(this);
         delete = view.findViewById(R.id.delete);
         delete.setOnClickListener(this);
-        listView = view.findViewById(R.id.listView);
+        exList = view.findViewById(R.id.ex_list);
+        mAdapter = new ShopCartAdapter(context, groups, childs);
+        exList.setAdapter(mAdapter);
+        for (int i = 0; i < mAdapter.getGroupCount(); i++) {
+            exList.expandGroup(i);
+        }
     }
 
     private void initData() {
-        int[] imgs = {R.mipmap.adgn,R.mipmap.bhc,
-                R.mipmap.cht,R.mipmap.dove,R.mipmap.firstcode,
-                R.mipmap.hn,R.mipmap.jly,R.mipmap.ksf,
-                R.mipmap.ls,R.mipmap.mn,R.mipmap.qidu};
-        double[] moneys = {6.80,2.50,6.80,40.60,45.80,
-        4.60,5.20,3.20,2.50,2.30,5.50};
-        items = new ArrayList<>();
-        imgs1 = new ArrayList<>();
-        imgs2 = new ArrayList<>();
-        imgs3 = new ArrayList<>();
-        moneys1 = new ArrayList<>();
-        moneys2 = new ArrayList<>();
-        moneys3 = new ArrayList<>();
-        for (int i = 0; i < imgs.length; i++) {
-            imgs1.add(imgs[i]);
-            imgs2.add(imgs[i]);
-            imgs3.add(imgs[i]);
-        }
-        for (int i = 0; i < moneys.length; i++) {
-            moneys1.add(moneys[i]);
-            moneys2.add(moneys[i]);
-            moneys3.add(moneys[i]);
-        }
-        items.add(new ShopCartItem("五一市场",imgs1,moneys1));
-        items.add(new ShopCartItem("衡州市场",imgs2,moneys2));
-        items.add(new ShopCartItem("桥南市场",imgs3,moneys3));
-        mAdapter = new ShopCartAdapter(getContext(),items);
-        listView.setAdapter(mAdapter);
+        groups = new ArrayList<>();
+        groups.add(new ShopCartGroup("五一市场"));
+        groups.add(new ShopCartGroup("衡州市场"));
+        groups.add(new ShopCartGroup("桥南市场"));
+
+        childs = new ArrayList<>();
+
+        child1 = new ArrayList<>();
+        child1.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child1.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child1.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        childs.add(child1);
+
+        child2 = new ArrayList<>();
+        child2.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child2.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child2.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        childs.add(child2);
+
+        child3 = new ArrayList<>();
+        child3.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child3.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        child3.add(new ShopCartChild(R.mipmap.adgn, "哇哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+                , 6.80));
+        childs.add(child3);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.manager:
-                if (mark){
+                if (mark) {
                     mark = false;
                     manager.setText(R.string.complete);
                     settlement.setVisibility(View.GONE);
                     total.setVisibility(View.GONE);
                     money.setVisibility(View.GONE);
                     delete.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     mark = true;
                     manager.setText(R.string.manager);
                     settlement.setVisibility(View.VISIBLE);
@@ -118,7 +133,7 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.delete:
-                Toast.makeText(getContext(),"您还没有选择商品哦！",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "您还没有选择商品哦！", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

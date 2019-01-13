@@ -4,85 +4,127 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plb.R;
-import com.example.plb.bean.ShopCartItem;
+import com.example.plb.bean.ShopCartChild;
+import com.example.plb.bean.ShopCartGroup;
 
 import java.util.List;
 
 /**
  * Created by zhc on 2019/1/4.
  */
-public class ShopCartAdapter extends BaseAdapter {
+public class ShopCartAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<ShopCartItem> items;
-    private LinearLayout content;
+    private List<ShopCartGroup> groups;
+    private List<List<ShopCartChild>> childs;
+    private ViewHolderGroup holderGroup = null;
+    private ViewHolderChild holderChild = null;
 
-    public ShopCartAdapter(Context context, List<ShopCartItem> items) {
+    public ShopCartAdapter(Context context, List<ShopCartGroup> groups,
+                           List<List<ShopCartChild>> childs) {
         this.context = context;
-        this.items = items;
+        this.groups = groups;
+        this.childs = childs;
     }
 
     @Override
-    public int getCount() {
-        return items.size();
+    public int getGroupCount() {
+        return groups.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return items.get(position);
+    public int getChildrenCount(int groupPosition) {
+        return childs.get(groupPosition).size();
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public Object getGroup(int groupPosition) {
+        return groups.get(groupPosition);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        if (convertView == null){
-            holder = new ViewHolder();
-            convertView = LayoutInflater.from(context)
-                    .inflate(R.layout.item_shopcart,null);
-            holder.address = convertView.findViewById(R.id.address);
-            convertView.setTag(holder);
-        }else {
-            holder = (ViewHolder) convertView.getTag();
+    public Object getChild(int groupPosition, int childPosition) {
+        return childs.get(groupPosition).get(childPosition);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            holderGroup = new ViewHolderGroup();
+            convertView = LayoutInflater.from(context).inflate(R.layout.group_shopcart, null);
+            holderGroup.select = convertView.findViewById(R.id.selectAll);
+            holderGroup.address = convertView.findViewById(R.id.address);
+            holderGroup.arrow = convertView.findViewById(R.id.arrow);
+            convertView.setTag(holderGroup);
+        } else {
+            holderGroup = (ViewHolderGroup) convertView.getTag();
         }
-        content = convertView.findViewById(R.id.content);
-        holder.address.setText(items.get(position).getAddress());
-        for (int i = 0; i < items.size(); i++) {
-            for (int j = 0; j < items.get(i).getImgs().size(); j++) {
-                final int index = j;
-                View view = LayoutInflater.from(context)
-                        .inflate(R.layout.item_horizontalscrollview,null);
-                ImageView img = view.findViewById(R.id.img);
-                TextView money = view.findViewById(R.id.money);
-                CheckBox ck = view.findViewById(R.id.ck);
-                img.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,index + "",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                img.setImageResource(items.get(i).getImgs().get(j));
-                money.setText("￥" + items.get(i).getMoneys().get(j)+"");
-                content.addView(view);
-            }
-        }
+        if (isExpanded)
+            holderGroup.arrow.setImageResource(R.mipmap.below);
+        else
+            holderGroup.arrow.setImageResource(R.mipmap.right);
+        holderGroup.address.setText(groups.get(groupPosition).getAddress());
         return convertView;
     }
 
-    class ViewHolder{
+    @Override
+    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            holderChild = new ViewHolderChild();
+            convertView = LayoutInflater.from(context).inflate(R.layout.child_shopcart, null);
+            holderChild.select = convertView.findViewById(R.id.select);
+            holderChild.img = convertView.findViewById(R.id.img);
+            holderChild.info = convertView.findViewById(R.id.info);
+            holderChild.money = convertView.findViewById(R.id.money);
+            convertView.setTag(holderChild);
+        } else {
+            holderChild = (ViewHolderChild) convertView.getTag();
+        }
+        holderChild.img.setImageResource(childs.get(groupPosition).get(childPosition).getImg());
+        holderChild.info.setText(childs.get(groupPosition).get(childPosition).getInfo());
+        holderChild.money.setText("￥" + childs.get(groupPosition).get(childPosition).getMoney());
+        return convertView;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
+    }
+
+    private static class ViewHolderGroup {
+        CheckBox select;
         TextView address;
+        ImageView arrow;
+    }
+
+    private static class ViewHolderChild {
+        CheckBox select;
+        ImageView img;
+        TextView info;
+        TextView money;
     }
 
 }

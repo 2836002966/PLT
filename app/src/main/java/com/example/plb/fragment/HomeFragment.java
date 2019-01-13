@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private LinearLayout mShopLayout7;   //特价商品7
     private LinearLayout mShopLayout8;   //特价商品8
     private LinearLayout mShopLayout9;   //特价商品9
+    private Intent intent;
     int i=0,k=1;
     @Nullable
     @Override
@@ -182,11 +183,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.action_more:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                intent = new Intent(getActivity(), ProductInfoActivity.class);
+                intent.putExtra("actionMore","actionMore");
+                startActivity(intent);
                 break;
             case R.id.hot_more:
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
-                break;
+                intent.putExtra("hotMore","hotMore");
+                startActivity(intent);
             case R.id.home_shop_layout1:
                 startActivity(new Intent(getActivity(), ProductInfoActivity.class));
                 break;

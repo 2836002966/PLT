@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.example.plb.activity.InformationActivity;
 import com.example.plb.activity.StoreCertificationActivity;
 import com.example.plb.activity.LoginPageActivity;
 import com.example.plb.activity.OrderActivity;
@@ -38,10 +39,12 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
         RelativeLayout rl_setting = view.findViewById(R.id.rl_setting);
         RelativeLayout rl_subscription = view.findViewById(R.id.rl_subscription);
         RelativeLayout rl_collection = view.findViewById(R.id.rl_collection);
+        RelativeLayout rl_dataManagement = view.findViewById(R.id.rl_dataManagement);
         rl_myOrder.setOnClickListener(this);
         rl_setting.setOnClickListener(this);
         rl_subscription.setOnClickListener(this);
         rl_collection.setOnClickListener(this);
+        rl_dataManagement.setOnClickListener(this);
     }
 
     /**
@@ -63,8 +66,11 @@ public class PersonalFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_collection:
                 startActivity(new Intent(getActivity(), StoreCertificationActivity.class));
                 break;
-                default:
-                    break;
+            case R.id.rl_dataManagement:
+                startActivity(new Intent(getActivity(), InformationActivity.class));
+                break;
+            default:
+                break;
         }
     }
 }
