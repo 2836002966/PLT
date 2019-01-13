@@ -18,7 +18,7 @@
     <string name="hasPayment">已付款</string>
     <string name="hasComplete">已完成</string>
     <string name="title_activity_firm_order">FirmOrder</string>
-
+    <string name="shop_WandH">80dp</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
