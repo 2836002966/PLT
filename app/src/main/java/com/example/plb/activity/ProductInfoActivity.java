@@ -5,18 +5,19 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -26,10 +27,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.plb.R;
-import com.example.plb.bean.HomeToShop;
 import com.example.plb.bean.ProductInfo;
 
 import java.io.Serializable;
@@ -66,11 +67,28 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
         initData();
         init();
 
+        //输入完内容点击搜索后，隐藏键盘
+        mEditSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    handled = true;
+                     /*隐藏软键盘*/
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (inputMethodManager.isActive()) {
+                        inputMethodManager.hideSoftInputFromWindow(ProductInfoActivity.this.getCurrentFocus().getWindowToken(), 0);
+                    }
+                }
+                return handled;
+            }
+        });
     }
 
     @SuppressLint("ResourceAsColor")
     private void init(){
         mEditSearch = findViewById(R.id.search);
+
         mShoppingCar = findViewById(R.id.shopping_car_btn);
         mShoppingCar.setOnClickListener(this);
         mBackBtn = findViewById(R.id.back_btn);
@@ -78,10 +96,12 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
         mShaiXuanLayout = findViewById(R.id.shaixuan);
         mShaiXuanLayout.setOnClickListener(this);
 
+        //商品信息
         mProListView = findViewById(R.id.list_view_product_info);
         myProductInfoAdapter = new MyProductInfoAdapter();
         mProListView.setAdapter(myProductInfoAdapter);
 
+        //综合下拉栏
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getBaseContext()
                 , R.array.zonghe, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -114,7 +134,23 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
     }
 
     private void openShaiXuan(){
+        Dialog dialog = new Dialog(mContext,R.style.ProductInfoDialogStyle);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_productinfo_rightmenu,null);
+        //将布局设置给Dialog
+        dialog.setContentView(view);
+        //获取当前窗口
+        Window dialogWindow = dialog.getWindow();
+        //设置dialog从右边弹出
+        dialogWindow.setGravity(Gravity.RIGHT);
+        //获得窗口体属性
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        //设置或修改属性
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
 
+        //将获得的窗口体属性设置给dialog
+        dialogWindow.setAttributes(lp);
+        dialog.show();
     }
 
     //综合的子项选择
