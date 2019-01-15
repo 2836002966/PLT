@@ -11,9 +11,7 @@ import android.widget.Toast;
 
 import com.example.plb.activity.AddShopPopupwindow;
 import com.example.plb.R;
-import com.example.plb.bean.HomeToShop;
-
-import static android.content.Intent.getIntent;
+import com.example.plb.bean.ShopMarket;
 
 /**
  * Created by 陈 on 2019/1/2.
@@ -46,10 +44,8 @@ public class DetailsShopFragment extends Fragment {
     private void isHandle(){
         int id = getActivity().getIntent().getIntExtra("id",1);
         if (id==88888){
-            HomeToShop homeToShop = new HomeToShop();
-            String str = homeToShop.getShopName();
 
-            Toast.makeText(getContext(),"测试"+str,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"测试",Toast.LENGTH_SHORT).show();
         }
     }
 
