@@ -1,5 +1,6 @@
 package com.example.plb.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.plb.R;
 import com.example.plb.adapter.MyListAdapter;
 import com.example.plb.bean.FirmOrderItem;
+import com.example.plb.bean.MoneyBean;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -54,6 +57,7 @@ public class FirmOrder extends AppCompatActivity implements View.OnClickListener
         listView= findViewById(R.id.firm_order_listview);
         sum_moeny = findViewById(R.id.firm_order_money);
         btn = findViewById(R.id.firm_order_settlement);
+        btn.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +65,13 @@ public class FirmOrder extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()){
             case R.id.order_back:
                 finish();
+                break;
+            case R.id.firm_order_settlement:
+                Intent intent = new Intent(this,PaymentActivity.class);
+                MoneyBean moneyBean = new MoneyBean();
+                moneyBean.setMoney(Integer.parseInt(sum_moeny.getText().toString()));
+                intent.putExtra("money",moneyBean);
+                startActivity(intent);
                 break;
         }
     }

@@ -41,12 +41,13 @@
         <activity
             android:name=".activity.RegisteredActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.StoreCertificationActivity">
-        </activity>
-
-        <activity android:name=".activity.ProductInfoActivity">
-        </activity>
-
+        <activity android:name=".activity.StoreCertificationActivity" />
+        <activity android:name=".activity.ProductInfoActivity" />
+        <activity
+            android:name=".activity.PaymentActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.OrderDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

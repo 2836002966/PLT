@@ -13,6 +13,8 @@
     <string name="total">合计：</string>
     <string name="delete">删除</string>
     <string name="firm_order">确认订单</string>
+    <string name="payment">付款详情</string>
+    <string name="order">订单详情</string>
     <string name="myOrder">我的订单</string>
     <string name="stayPayment">待付款</string>
     <string name="hasPayment">已付款</string>

@@ -75,7 +75,7 @@ public class MyListAdapter extends BaseAdapter{
              frim_sum+=sum;
             money.setText(sum+"");
             Log.e("------", textView.getText().toString() );
-            textView.setText("￥"+frim_sum);
+            textView.setText(frim_sum+"");
             Log.e("------", textView.getText().toString() );
             ck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -84,12 +84,12 @@ public class MyListAdapter extends BaseAdapter{
                         sum +=12;
                         frim_sum+=12;
                         money.setText(sum+"");
-                        textView.setText("￥"+frim_sum);
+                        textView.setText(frim_sum+"");
                     }else {
                         sum -=12;
                         frim_sum-=12;
                         money.setText(sum+"");
-                        textView.setText("￥"+frim_sum);
+                        textView.setText(frim_sum+"");
                     }
                 }
             });

@@ -35,13 +35,14 @@
     <dimen name="ware_img_width">150dp</dimen>
     <dimen name="small_ware_img_width">100dp</dimen>
     <dimen name="category_layout_width">120dp</dimen>
-
-
-</resources>
-
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
     <dimen name="trade_num">55dp</dimen>
-    <dimen name="trade_height">345dp</dimen>
-    <dimen name="order_height">355dp</dimen>
+    <dimen name="trade_height">450dp</dimen>
+    <dimen name="order_height">480dp</dimen>
+    <dimen name="payment_setdistance">85dp</dimen>
+    <dimen name="payment_setdistance_zfb">175dp</dimen>
+    <dimen name="payment_setdistance_wechat">225dp</dimen>
+    <dimen name="payment_setdistance_btn">275dp</dimen>
+    <dimen name="details_setdistance_btn">50dp</dimen>
 </resources>
+
+
