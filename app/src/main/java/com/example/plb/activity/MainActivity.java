@@ -3,7 +3,6 @@ package com.example.plb.activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,14 +34,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //得到当前界面的装饰视图
-        if(Build.VERSION.SDK_INT >= 21) {
+      /*  if(Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             //让应用主题内容占用系统状态栏的空间,注意:下面两个参数必须一起使用 stable 牢固的
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             //设置状态栏颜色为透明
             getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+           *//* getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //注意要清除 FLAG_TRANSLUCENT_STATUS flag
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.orange));*//*
+        }*/
+        getWindow().setStatusBarColor(getResources ().getColor ( R.color.colorPrimary ));
         setContentView(R.layout.activity_main);
         initTab();
     }
@@ -83,13 +87,10 @@ public class MainActivity extends AppCompatActivity {
         super.setContentView(view);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
              Window window = getWindow();
-
             //设置修改状态栏
              window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
             //设置状态栏的颜色，和你的app主题或者标题栏颜色设置一致就ok了
              window.setStatusBarColor(getResources().getColor(R.color.orange));
         }
-
     }
 }

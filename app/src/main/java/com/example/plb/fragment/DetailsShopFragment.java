@@ -44,6 +44,9 @@ public class DetailsShopFragment extends Fragment {
     private void isHandle(){
         int id = getActivity().getIntent().getIntExtra("id",1);
         if (id==88888){
+            HomeToShop homeToShop = new HomeToShop();
+            String str = homeToShop.getShopName();
+            Toast.makeText(getContext(),"测试"+str,Toast.LENGTH_SHORT).show();
 
             Toast.makeText(getContext(),"测试",Toast.LENGTH_SHORT).show();
         }
