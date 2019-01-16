@@ -46,8 +46,10 @@
         <activity
             android:name=".activity.PaymentActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.OrderDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".activity.OrderDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.InformationActivity"></activity>
     </application>
 
 </manifest>
