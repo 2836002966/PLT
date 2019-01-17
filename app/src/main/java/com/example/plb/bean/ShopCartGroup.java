@@ -6,9 +6,10 @@ package com.example.plb.bean;
 public class ShopCartGroup {
 
     private String address;
-
-    public ShopCartGroup(String address) {
+    private boolean isChecked;
+    public ShopCartGroup(String address,boolean isChecked) {
         this.address = address;
+        this.isChecked=isChecked;
     }
 
     public String getAddress() {
@@ -17,5 +18,13 @@ public class ShopCartGroup {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }
