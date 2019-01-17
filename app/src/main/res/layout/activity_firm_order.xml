@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,10 +14,11 @@
         android:background="@color/orange"
         android:layout_alignParentTop="true">
         <ImageView
+
             android:id="@+id/order_back"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@mipmap/back"/>
         <TextView
             android:id="@+id/title"
@@ -33,7 +34,9 @@
 
     </RelativeLayout>
     <LinearLayout
+        android:layout_below="@+id/head"
         android:layout_width="match_parent"
+        android:id="@+id/l1"
         android:orientation="vertical"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -67,17 +70,18 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="2dp"
+        android:layout_below="@id/l1"
+        android:layout_marginTop="5dp"
         android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="1dp">
     </LinearLayout>
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <ListView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/l1"
             android:id="@+id/firm_order_listview"
             android:layout_width="match_parent"
-            android:layout_height="480dp">
+            android:layout_height="@dimen/order_height">
 
         </ListView>
     <RelativeLayout
@@ -108,13 +112,21 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/firm_order_money"
+            android:id="@+id/fuhao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="￥0"
+            android:text="￥"
             android:textColor="@color/red"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/total"/>
+        <TextView
+            android:id="@+id/firm_order_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/fuhao"/>
 
         <Button
             android:id="@+id/firm_order_settlement"
@@ -147,4 +159,4 @@
             android:background="@color/gray"/>
 
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

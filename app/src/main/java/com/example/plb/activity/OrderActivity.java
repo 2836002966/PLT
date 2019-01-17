@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.plb.R;
+import com.example.plb.adapter.OrderAdapter;
 import com.example.plb.fragment.HasCompleteFragment;
 import com.example.plb.fragment.HasPaymentFragment;
 import com.example.plb.fragment.StayPaymentFragment;
@@ -24,13 +25,12 @@ import java.util.List;
  */
 public class OrderActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView tv_stayPayment, tv_hasPayment, tv_hasComplete;
+    private TextView tv_stayPayment;
+    private TextView tv_hasPayment;
+    private TextView tv_hasComplete;
     private ViewPager vp_viewPager;
-    private StayPaymentFragment stayPaymentFragment;
-    private HasPaymentFragment hasPaymentFragment;
-    private HasCompleteFragment hasCompleteFragment;
-    private List<Fragment> mFragmentList = new ArrayList<>();
-    private FragmentAdapter adapter;
+    private List<Fragment> list;
+    private OrderAdapter adapter;
     private ImageView iv_exit;
 
     @Override
@@ -38,34 +38,26 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         initUI();
-        adapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-        vp_viewPager.setOffscreenPageLimit(2);  //ViewPager的缓存为4帧
-        vp_viewPager.setAdapter(adapter);  //开启适配器
-        vp_viewPager.setCurrentItem(0); //初始设置ViewPager选中第一帧
+        //设置菜单栏的点击事件
+        tv_stayPayment.setOnClickListener(this);
+        tv_hasPayment.setOnClickListener(this);
+        tv_hasComplete.setOnClickListener(this);
+        iv_exit.setOnClickListener(this);
+        vp_viewPager.addOnPageChangeListener(new MyPagerChangeListener());
+        //把Fragment添加到List集合里面
+        list = new ArrayList<>();
+        list.add(new StayPaymentFragment());
+        list.add(new HasPaymentFragment());
+        list.add(new HasCompleteFragment());
+        adapter = new OrderAdapter(getSupportFragmentManager(), list);
+        vp_viewPager.setAdapter(adapter);
+        vp_viewPager.setCurrentItem(0);  //初始化显示第一个页面
         tv_stayPayment.setTextColor(Color.parseColor("#ffffff"));  //选中第一个颜色的字体
         tv_stayPayment.setBackgroundColor(Color.parseColor("#ed6a1a"));  //选中第一个颜色的背景
-        //ViewPager的监听事件
-        vp_viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                /*此方法在页面被选中时调用*/
-                changeTextColor(i);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
     }
 
     /**
-     * 初始化布局
+     * 初始化控件
      */
     private void initUI() {
         tv_stayPayment = findViewById(R.id.tv_stayPayment);
@@ -73,33 +65,25 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         tv_hasComplete = findViewById(R.id.tv_hasComplete);
         vp_viewPager = findViewById(R.id.vp_viewPager);
         iv_exit = findViewById(R.id.iv_exit);
-        tv_stayPayment.setOnClickListener(this);
-        tv_hasPayment.setOnClickListener(this);
-        tv_hasComplete.setOnClickListener(this);
-        iv_exit.setOnClickListener(this);
-        stayPaymentFragment = new StayPaymentFragment();
-        hasPaymentFragment = new HasPaymentFragment();
-        hasCompleteFragment = new HasCompleteFragment();
-        //给FragmentList添加数据
-        mFragmentList.add(stayPaymentFragment);
-        mFragmentList.add(hasPaymentFragment);
-        mFragmentList.add(hasCompleteFragment);
     }
 
     /**
-     * 点击底部Text 动态修改ViewPager的内容
+     * 点击Text动态切换Fragment
      */
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_stayPayment:
-                vp_viewPager.setCurrentItem(0, true);
+                vp_viewPager.setCurrentItem(0);
+                changeTextColorAndBackgroundColor(0);
                 break;
             case R.id.tv_hasPayment:
-                vp_viewPager.setCurrentItem(1, true);
+                vp_viewPager.setCurrentItem(1);
+                changeTextColorAndBackgroundColor(1);
                 break;
             case R.id.tv_hasComplete:
-                vp_viewPager.setCurrentItem(2, true);
+                vp_viewPager.setCurrentItem(2);
+                changeTextColorAndBackgroundColor(2);
                 break;
             case R.id.iv_exit:
                 finish();
@@ -109,30 +93,40 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public class FragmentAdapter extends FragmentPagerAdapter{
+    /**
+     * 设置一个ViewPager的侦听事件，当左右滑动ViewPager时菜单栏被选中状态跟着改变
+     */
+    public class MyPagerChangeListener implements ViewPager.OnPageChangeListener {
 
-        List<Fragment> fragmentList;
-
-        public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
-            super(fm);
-            this.fragmentList = fragmentList;
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
         }
 
         @Override
-        public Fragment getItem(int i) {
-            return fragmentList.get(i);
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
         }
 
         @Override
-        public int getCount() {
-            return fragmentList.size();
+        public void onPageSelected(int position) {
+            switch (position) {
+                case 0:
+                    changeTextColorAndBackgroundColor(0);
+                    break;
+                case 1:
+                    changeTextColorAndBackgroundColor(1);
+                    break;
+                case 2:
+                    changeTextColorAndBackgroundColor(2);
+                    break;
+            }
         }
     }
 
-    /*
-     *由ViewPager的滑动修改底部导航Text的颜色
+    /**
+     * 根据position改变选中状态的文本和背景颜色
+     * @param position
      */
-    private void changeTextColor(int position) {
+    private void changeTextColorAndBackgroundColor(int position) {
         if (position == 0) {
             tv_stayPayment.setTextColor(Color.parseColor("#ffffff"));
             tv_stayPayment.setBackgroundColor(Color.parseColor("#ed6a1a"));

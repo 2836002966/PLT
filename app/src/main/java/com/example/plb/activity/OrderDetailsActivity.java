@@ -1,38 +1,31 @@
 package com.example.plb.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.plb.R;
 import com.example.plb.adapter.MyListAdapter;
+import com.example.plb.adapter.TradeAdapter;
 import com.example.plb.bean.FirmOrderItem;
-import com.example.plb.bean.MoneyBean;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-//确认订单
-public class FirmOrder extends AppCompatActivity implements View.OnClickListener{
+public class OrderDetailsActivity extends AppCompatActivity implements View.OnClickListener{
+    Button quxiao,queren;
     ImageView back;
     ListView listView;
     private List<FirmOrderItem> items;
     private List<String> str;
-    private MyListAdapter myListAdapter;
+    private TradeAdapter myListAdapter;
     TextView sum_moeny;
-    Button btn;
     int sum=0,firm_num,firm_money;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,33 +38,29 @@ public class FirmOrder extends AppCompatActivity implements View.OnClickListener
             //设置状态栏颜色为透明
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        setContentView(R.layout.activity_firm_order);
-
+        setContentView(R.layout.activity_order_details);
         initView();
         initData();
-
     }
     private void initView(){
-        back=findViewById(R.id.order_back);
+        back=findViewById(R.id.details_back);
         back.setOnClickListener(this);
-        listView= findViewById(R.id.firm_order_listview);
-        sum_moeny = findViewById(R.id.firm_order_money);
-        btn = findViewById(R.id.firm_order_settlement);
-        btn.setOnClickListener(this);
+        listView= findViewById(R.id.details_listview);
+        queren = findViewById(R.id.details_queren);
+        queren.setOnClickListener(this);
+        quxiao = findViewById(R.id.details_quxiao);
+        quxiao.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.order_back:
+            case R.id.details_back:
                 finish();
                 break;
-            case R.id.firm_order_settlement:
-                Intent intent = new Intent(this,PaymentActivity.class);
-                MoneyBean moneyBean = new MoneyBean();
-                moneyBean.setMoney(Integer.parseInt(sum_moeny.getText().toString()));
-                intent.putExtra("money",moneyBean);
-                startActivity(intent);
+            case R.id.details_queren:
+                break;
+            case R.id.details_quxiao:
                 break;
         }
     }
@@ -84,14 +73,8 @@ public class FirmOrder extends AppCompatActivity implements View.OnClickListener
         firm_money = 39;
         items.add(new FirmOrderItem(R.mipmap.example_1,"安慕希牛奶",firm_num,str,firm_money));
         items.add(new FirmOrderItem(R.mipmap.example_1,"安慕希牛奶",firm_num,str,firm_money));
-        myListAdapter = new MyListAdapter(this,items,sum_moeny);
+        myListAdapter = new TradeAdapter(this,items);
         listView.setAdapter(myListAdapter);
     }
 
-    public FirmOrder() {
-    }
-
-    public FirmOrder(int i) {
-        this.sum = i;
-    }
 }
