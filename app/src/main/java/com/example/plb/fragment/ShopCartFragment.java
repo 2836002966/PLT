@@ -109,7 +109,6 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener {
                 , 6.80));
         childs.add(child3);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

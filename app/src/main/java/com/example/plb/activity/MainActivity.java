@@ -1,8 +1,11 @@
 package com.example.plb.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Tab> mTab;
     private LayoutInflater mInflater;
     private FragmentTabHost mTabHost;
+    private int mFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         initTab();
     }
 
-    private void initTab() {
+    private void initTab( ) {
         mTab = new ArrayList<>();
 
         mTab.add(new Tab(HomeFragment.class,R.string.home,R.drawable.selector_icon_home));
