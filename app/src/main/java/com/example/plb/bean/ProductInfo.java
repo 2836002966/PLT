@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 public class ProductInfo {
 
-    public RelativeLayout mProDataLayout;
-
     //mProDataLayout（右侧的商品信息块所需的值）
     private int proImageButtonPath;    //按钮的图片路径
     private String shopName;    //商品名
@@ -27,6 +25,7 @@ public class ProductInfo {
     public ImageView mJinKouImage;
     public TextView mDanjia;
     public TextView mMarket;
+    public RelativeLayout mProDataLayout;
 
     public ProductInfo(int proImageButtonPath, String shopName , int minNum , boolean isShowJK, int danjia , String market) {
         this.proImageButtonPath = proImageButtonPath;

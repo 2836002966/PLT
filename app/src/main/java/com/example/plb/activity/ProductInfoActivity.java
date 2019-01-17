@@ -33,13 +33,20 @@ import android.widget.Toast;
 import com.example.plb.R;
 import com.example.plb.bean.ProductInfo;
 
-import java.io.Serializable;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class ProductInfoActivity extends Activity implements Serializable,View.OnClickListener,AdapterView.OnItemSelectedListener{
+import static java.net.Proxy.Type.HTTP;
+
+public class ProductInfoActivity extends Activity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
     private ListView mProListView;  //商品的Listview
-    private List<ProductInfo> productInfoList = new ArrayList<>();  //商品数据
+    private ArrayList<ProductInfo> productInfoList = new ArrayList<>();  //商品数据
     private MyProductInfoAdapter myProductInfoAdapter;              //商品信息适配器
     private Spinner mSpinner;       //综合下拉
     private Context mContext;       //当前上下文
@@ -99,6 +106,7 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
         //商品信息
         mProListView = findViewById(R.id.list_view_product_info);
         myProductInfoAdapter = new MyProductInfoAdapter();
+        Log.d("8888", "123");
         mProListView.setAdapter(myProductInfoAdapter);
 
         //综合下拉栏
@@ -156,91 +164,132 @@ public class ProductInfoActivity extends Activity implements Serializable,View.O
     //综合的子项选择
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        switch (id+""){
+            case "0":
+                Toast.makeText(this,"综合",Toast.LENGTH_SHORT).show();
+                break;
+            case "1":
+                Toast.makeText(this,"销量",Toast.LENGTH_SHORT).show();
+                break;
+            case "2":
+                ArrayList<ProductInfo> list1 = ascendingOrder(productInfoList);
+                productInfoList = list1;
+                myProductInfoAdapter.notifyDataSetChanged();
+                break;
+            case "3":
+                ArrayList<ProductInfo> list2 = descendingOrder(productInfoList);
+                productInfoList = list2;
+                myProductInfoAdapter.notifyDataSetChanged();
+                break;
+        }
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+    //升序
+    private ArrayList<ProductInfo> ascendingOrder(ArrayList<ProductInfo> list){
+        for (int i=0;i<list.size();i++){
+            for (int j=0;j<list.size();j++){
+                if (list.get(i).getDanjia()<list.get(j).getDanjia()){
+                    ProductInfo pro = list.get(i);
+                    list.set(i,list.get(j));
+                    list.set(j,pro);
+                }
+            }
+        }
+        return list;
+    }
+    //降序
+    private ArrayList<ProductInfo> descendingOrder(ArrayList<ProductInfo> list){
+        Collections.sort(list, new Comparator<ProductInfo>() {
+            @Override
+            public int compare(ProductInfo o1, ProductInfo o2) {
+                return o2.getDanjia()-o1.getDanjia();
+            }
+        });
+        return list;
+    }
 
     public class MyProductInfoAdapter extends BaseAdapter{
-        @Override
+
         public int getCount() {
             return productInfoList.size();
         }
-        @Override
+
         public Object getItem(int position) {
             return productInfoList.get(position);
         }
-        @Override
+
         public long getItemId(int position) {
             return position;
         }
-        @Override
+
         public View getView(int position, View convertView, ViewGroup parent) {
             final ProductInfo holder;
-            if (convertView==null) {
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.item_productinfo, null);
-                holder = productInfoList.get(position);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_productinfo,null);
+            holder = productInfoList.get(position);
 
-                //初始化图片按钮、信息介绍layout
-                holder.mProImageButton = convertView.findViewById(R.id.productinfo_img);
-                holder.mProDataLayout = convertView.findViewById(R.id.productinfo_data);
-                holder.mJinKouImage = convertView.findViewById(R.id.productinfo_shop_jinkou);
-                holder.mShopName = convertView.findViewById(R.id.productinfo_shop_name);
-                holder.mMinNum = convertView.findViewById(R.id.productinfo_min_shop_number);
-                holder.mDanjia = convertView.findViewById(R.id.productinfo_shop_price);
-                holder.mMarket = convertView.findViewById(R.id.productinfo_market);
-
-                //处理图片按钮功能
-                holder.mProImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                            View bigView = LayoutInflater.from(mContext)
-                                .inflate(R.layout.item_productinfo_big_image,null);
-                        ImageView imageView = bigView.findViewById(R.id.big_show);
-                        imageView.setImageResource(holder.getProImageButtonPath());
-                        Log.d("888", imageView.toString());
-
-                        Dialog dialog = new Dialog(ProductInfoActivity.this);
-                        dialog.setContentView(bigView);
-                        dialog.show();
-                        Toast.makeText(ProductInfoActivity.this
-                                ,holder.getProImageButtonPath()
-                                ,Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                holder.mProDataLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //点击显示商品详情/传值
-                        Intent intent = new Intent(ProductInfoActivity.this
-                                ,DetailsActivity.class);
-                        intent.putExtra("shopName",holder.getShopName());
-                        intent.putExtra("market",holder.getMarket());
-                        startActivityForResult(intent,88888);
-                    }
-                });
-
-                //给显示商品模块的各项控件设值
-                holder.mProImageButton.setBackgroundResource(holder.getProImageButtonPath());
-                holder.mShopName.setText(holder.getShopName()+"");
-                holder.mMinNum.setText(holder.getMinNum()+"");
-                if(!holder.isShowJK()){
-                    holder.mJinKouImage.setVisibility(View.INVISIBLE);
-                }else {
-                    holder.mJinKouImage.setVisibility(View.VISIBLE);
-                }
-                holder.mDanjia.setText(holder.getDanjia()+"");
-                holder.mMarket.setText(holder.getMarket()+"");
-                
-                convertView.setTag(holder);
-            }else {
-                holder = (ProductInfo) convertView.getTag();
+            if (convertView!=null){
+                convertView.getTag();
             }
+
+            //初始化图片按钮、信息介绍layout
+            holder.mProImageButton = convertView.findViewById(R.id.productinfo_img);
+            holder.mProDataLayout = convertView.findViewById(R.id.productinfo_data);
+            holder.mJinKouImage = convertView.findViewById(R.id.productinfo_shop_jinkou);
+            holder.mShopName = convertView.findViewById(R.id.productinfo_shop_name);
+            holder.mMinNum = convertView.findViewById(R.id.productinfo_min_shop_number);
+            holder.mDanjia = convertView.findViewById(R.id.productinfo_shop_price);
+            holder.mMarket = convertView.findViewById(R.id.productinfo_market);
+
+            //处理图片按钮功能
+            holder.mProImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    View bigView = LayoutInflater.from(mContext)
+                            .inflate(R.layout.item_productinfo_big_image,null);
+                    ImageView imageView = bigView.findViewById(R.id.big_show);
+                    imageView.setImageResource(holder.getProImageButtonPath());
+
+                    Dialog dialog = new Dialog(ProductInfoActivity.this);
+                    dialog.setContentView(bigView);
+                    dialog.show();
+                    Toast.makeText(ProductInfoActivity.this
+                            ,holder.getProImageButtonPath()
+                            ,Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            holder.mProDataLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //点击显示商品详情/传值
+                    Intent intent = new Intent(ProductInfoActivity.this
+                            ,DetailsActivity.class);
+                    intent.putExtra("shopName",holder.getShopName());
+                    intent.putExtra("market",holder.getMarket());
+                    startActivityForResult(intent,88888);
+                }
+            });
+
+            //给显示商品模块的各项控件设值
+            holder.mProImageButton.setBackgroundResource(holder.getProImageButtonPath());
+            holder.mShopName.setText(holder.getShopName()+"");
+            holder.mMinNum.setText(holder.getMinNum()+"");
+            if(!holder.isShowJK()){
+                holder.mJinKouImage.setVisibility(View.INVISIBLE);
+            }else {
+                holder.mJinKouImage.setVisibility(View.VISIBLE);
+            }
+            holder.mDanjia.setText(holder.getDanjia()+"");
+            holder.mMarket.setText(holder.getMarket()+"");
+
+            convertView.setTag(holder);
+
             return convertView;
         }
     }
+
 
 }
