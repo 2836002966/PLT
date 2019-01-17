@@ -1,6 +1,7 @@
 package com.example.plb.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +25,16 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<ShopCartGroup> groups;
-    private List<List<ShopCartChild>> childs;
+    private List<List<ShopCartChild>>child;
     private ViewHolderGroup holderGroup = null;
     private ViewHolderChild holderChild = null;
-
-    public ShopCartAdapter(Context context, List<ShopCartGroup> groups,
-                           List<List<ShopCartChild>> childs) {
+    private TextView moneyView;
+    private int i=1;
+    public ShopCartAdapter(Context context, List<ShopCartGroup>groups, List<List<ShopCartChild>>child,TextView moneyView) {
         this.context = context;
-        this.groups = groups;
-        this.childs = childs;
+        this.groups =groups;
+        this.child=child;
+        this.moneyView=moneyView;
     }
 
     @Override
@@ -42,17 +44,17 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return childs.get(groupPosition).size();
+        return child.get(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return groups.get(groupPosition);
+        return null;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return childs.get(groupPosition).get(childPosition);
+        return null;
     }
 
     @Override
@@ -85,10 +87,26 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         if (isExpanded)
             holderGroup.arrow.setImageResource(R.mipmap.below);
         else
-            holderGroup.arrow.setImageResource(R.mipmap.right);
+        holderGroup.arrow.setImageResource(R.mipmap.right);
         holderGroup.address.setText(groups.get(groupPosition).getAddress());
+        holderGroup.select.setChecked(groups.get(groupPosition).isChecked());
+        holderGroup.select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                groups.get(groupPosition).setChecked(isChecked);
+                for(int i=0;i<child.get(groupPosition).size();i++){
+//                    if(isChecked){
+//                        child.get(groupPosition).get(i).setChecked(true);
+//                    }else{
+//                        child.get(groupPosition).get(i).setChecked(false);
+//                    }
+                }
+                notifyDataSetChanged();
+            }
+        });
         return convertView;
     }
+
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
@@ -103,16 +121,37 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         } else {
             holderChild = (ViewHolderChild) convertView.getTag();
         }
-        holderChild.img.setImageResource(childs.get(groupPosition).get(childPosition).getImg());
-        holderChild.info.setText(childs.get(groupPosition).get(childPosition).getInfo());
-        holderChild.money.setText("￥" + childs.get(groupPosition).get(childPosition).getMoney());
+        holderChild.img.setImageResource(child.get(groupPosition).get(childPosition).getImg());
+        holderChild.info.setText(child.get(groupPosition).get(childPosition).getInfo());
+        holderChild.money.setText("￥" + child.get(groupPosition).get(childPosition).getMoney());
+        holderChild.select.setChecked(child.get(groupPosition).get(childPosition).getChecked());
+        holderChild.select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                child.get(groupPosition).get(childPosition).setChecked(isChecked);
+                double money=0;
+                for(int i=0;i<child.size();i++){
+                    for(int k=0;k<child.get(i).size();k++){
+                        if(child.get(i).get(k).getChecked()){
+                            money+=child.get(i).get(k).getMoney();
+                            moneyView.setText(money+"");
+                            notifyDataSetChanged();
+                        }
+                    }
+
+                }
+
+            }
+        });
         return convertView;
     }
 
+
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return true;
+        return false;
     }
+
 
     private static class ViewHolderGroup {
         CheckBox select;

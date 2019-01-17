@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.plb.R;
 import com.example.plb.activity.FirmOrder;
 import com.example.plb.adapter.ShopCartAdapter;
+
+
 import com.example.plb.bean.ShopCartChild;
 import com.example.plb.bean.ShopCartGroup;
 
@@ -38,13 +40,13 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener {
     private Button delete;
     private Context context;
     private List<ShopCartGroup> groups;
-    private List<List<ShopCartChild>> childs;
+
     private List<ShopCartChild> child1, child2, child3;
+    private List<List<ShopCartChild>>childs;
     private ExpandableListView exList;
     private ShopCartAdapter mAdapter;
     private boolean mark = true;
     private boolean isClisk = false;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener {
         delete = view.findViewById(R.id.delete);
         delete.setOnClickListener(this);
         exList = view.findViewById(R.id.ex_list);
-        mAdapter = new ShopCartAdapter(context, groups, childs);
+        mAdapter=new ShopCartAdapter(getActivity(),groups,childs,money);
         exList.setAdapter(mAdapter);
         for (int i = 0; i < mAdapter.getGroupCount(); i++) {
             exList.expandGroup(i);
@@ -74,9 +76,9 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener {
 
     private void initData() {
         groups = new ArrayList<>();
-        groups.add(new ShopCartGroup("五一市场"));
-        groups.add(new ShopCartGroup("衡州市场"));
-        groups.add(new ShopCartGroup("桥南市场"));
+        groups.add(new ShopCartGroup("五一市场",true));
+        groups.add(new ShopCartGroup("衡州市场",true));
+        groups.add(new ShopCartGroup("桥南市场",true));
 
         childs = new ArrayList<>();
 
@@ -107,7 +109,6 @@ public class ShopCartFragment extends Fragment implements View.OnClickListener {
                 , 6.80));
         childs.add(child3);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -37,8 +37,9 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/details_shopname"
         android:layout_gravity="center"
-        android:text="娃哈哈AD钙奶"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -52,20 +53,11 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@mipmap/wahaha1"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"/>
+                android:layout_gravity="center"
+                android:id="@+id/shop_details_iv"
+                android:layout_width="300dp"
+                android:layout_height="150dp"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@mipmap/wahaha2"
-                />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@mipmap/wahaha3" />
         </LinearLayout>
     </ScrollView>
 

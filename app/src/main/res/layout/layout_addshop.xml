@@ -12,9 +12,8 @@
 
         <ImageView
             android:id="@+id/shop_img"
-            android:src="@mipmap/adgn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -22,8 +21,8 @@
         <TextView
             android:id="@+id/shop_name"
             android:layout_marginTop="25dp"
-            android:textSize="18dp"
-            android:text="安慕希希腊酸奶"
+            android:textSize="15dp"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -33,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="2箱起批"
                 android:textColor="@color/gray"
                 android:textSize="13dp" />
         </LinearLayout>
@@ -77,14 +75,12 @@
                 <TextView
                     android:id="@+id/shop_Price"
                     android:textColor="@color/orange"
-                    android:text="36"
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/shop_Num"
                     android:layout_marginLeft="20dp"
-                    android:text="86箱可售"
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -92,7 +88,6 @@
                     android:id="@+id/shop_buyNum"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/orange"
-                    android:text="两箱购买"
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -115,7 +110,6 @@
                 android:gravity="center"
                 android:background="@drawable/sum_style"
                 android:id="@+id/shop_Sum"
-                android:text="1"
                 android:textSize="20dp"
                 android:layout_width="32dp"
                 android:layout_height="32dp" />
@@ -146,7 +140,6 @@
         <TextView
             android:layout_marginRight="20dp"
             android:textSize="20dp"
-            android:text="共1箱"
             android:layout_toLeftOf="@+id/money_tv"
             android:id="@+id/num_tv"
             android:layout_width="wrap_content"
@@ -156,7 +149,6 @@
             android:id="@+id/money_tv"
             android:textColor="@color/orange"
             android:layout_alignParentRight="true"
-            android:text="￥32"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

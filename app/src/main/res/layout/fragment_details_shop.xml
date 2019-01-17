@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shop_details_rl"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -8,9 +9,8 @@
    <ImageView
        android:id="@+id/details_shop_iv"
        android:layout_centerHorizontal="true"
-       android:src="@mipmap/adgn"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content" />
+       android:layout_width="150dp"
+       android:layout_height="150dp" />
 
     <View
         android:id="@+id/view"
@@ -19,18 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <TextView
-        style="@style/shop_attention"
         android:id="@+id/details_shop_name"
         android:layout_below="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        android:text="娃哈哈ad钙100g*12瓶/箱"
         android:textColor="@color/black" />
 
-    <RelativeLayout
-        android:id="@+id/shop_rl"
+    <LinearLayout
+        android:id="@+id/shop_lll"
         android:layout_below="@+id/details_shop_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,43 +36,55 @@
         android:layout_marginLeft="20dp"
         >
         <TextView
-            android:id="@+id/tv_shop_money"
             android:textColor="@color/orange"
             android:text="￥"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tv_shop_money"
+            android:id="@+id/tv_shop_money"
+            android:textColor="@color/orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/shop_unit"
             android:textColor="@color/black"
-            android:text="36/箱(￥3/瓶)" />
-    </RelativeLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/shop_ll"
-        android:layout_below="@+id/shop_rl"
+        android:layout_below="@+id/shop_lll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp">
         <TextView
+            android:id="@+id/shop_minNum"
             android:textColor="@color/orange"
-            android:text="2箱起订"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:text="起订"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange" />
         <TextView
             android:text="|"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/shop_stocks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text=" 36箱可售" />
+            android:text="可售" />
     </LinearLayout>
 
     <View
@@ -206,7 +216,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="￥36/箱"
+                android:id="@+id/retailPrice"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -248,10 +258,32 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="6个月"
+                android:id="@+id/ShelfLife"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="海外进口:"
+                android:textColor="@color/gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/imported"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+    <!--android:fitsSystemWindows="true"/-->
         <RelativeLayout
             android:id="@+id/title_home"
             android:layout_alignParentTop="true"
@@ -19,6 +19,31 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/dingwei"/>
 
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv"
+                android:id="@+id/adr_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="五一市场"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                />
+            <EditText
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/adr_home"
+                android:id="@+id/tv_search_home"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/search_home"
+                android:drawableLeft="@mipmap/search"
+                android:drawablePadding="10dp"
+                android:padding="5dp"
+                android:hint="蓝月亮黄金套装七折起"
+                android:textSize="13sp"
+                />
     </RelativeLayout>
 
 <ScrollView
@@ -365,6 +390,11 @@
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
                    android:background="@mipmap/wd"/>
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="正品直降" />
            </LinearLayout>
 
            <LinearLayout
@@ -383,10 +413,7 @@
                    android:layout_height="wrap_content"
                    android:text="母婴玩具"
                    android:textColor="@color/black"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="正品直降"/>
+
                <ImageView
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"

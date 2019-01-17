@@ -2,6 +2,9 @@ package com.example.plb.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +16,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.plb.R;
+import com.example.plb.bean.ShopBean;
+import com.example.plb.database.ShopDatabase;
+import com.example.plb.fragment.DetailsShopFragment;
+import com.example.plb.fragment.ShopFragment;
 
 /**
  * Created by 陈 on 2019/1/3.
@@ -34,7 +42,8 @@ public class AddShopPopupwindow extends PopupWindow{
     private TextView num_tv;//底部商品购买数量
     private TextView money_tv;//商品总价
     private Button add_btn;//确认数目后加入进货单
-    int i=1;
+    DetailsShopFragment ds = new DetailsShopFragment ();
+    int i =ds.minNum;;
     public AddShopPopupwindow(Activity context, View.OnClickListener itemsOnClick){
         super(context);
         initView(context, itemsOnClick);
@@ -44,9 +53,20 @@ public class AddShopPopupwindow extends PopupWindow{
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
         view = mInflater.inflate(R.layout.layout_addshop, null);
         initview();
+        initData();
         delete_shopNum.setOnClickListener (new MyOnClickListener());
         add_shopNum.setOnClickListener (new MyOnClickListener());
-        imageView = view.findViewById(R.id.diss);
+        add_btn.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                ShopDatabase shopDatabase = new ShopDatabase ( view.getContext (),1 );
+                //获取连接
+                SQLiteDatabase database = shopDatabase.getReadableDatabase ();
+                Toast.makeText ( view.getContext (), "加入进货单成功", Toast.LENGTH_SHORT ).show ();
+                dismiss ();
+            }
+        } );
+
         imageView.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
@@ -81,6 +101,17 @@ public class AddShopPopupwindow extends PopupWindow{
         });
     }
 
+    private void initData() {
+        Glide.with ( view.getContext () ).load ( ds.image ).into ( shop_img );
+        shop_name.setText ( ds.info+"" );
+        shop_beginSum.setText ( ds.minNum +""+ds.unit+"起批");
+        shop_Price.setText (ds.wholesalePrice+"" );
+        shop_Num.setText( ds.stocks +""+ds.unit+"可售");
+        shop_Sum.setText ( ds.minNum+"" );
+        num_tv.setText ( "共"+ds.minNum+"箱" );
+        money_tv.setText ( "￥"+ds.minNum*ds.wholesalePrice );
+    }
+
     /**
      * 设置添加屏幕的背景透明度
      *
@@ -95,6 +126,7 @@ public class AddShopPopupwindow extends PopupWindow{
     }
 
     private void initview() {
+        imageView = view.findViewById(R.id.diss);
         shop_img = view.findViewById ( R.id.shop_img );
         shop_name = view.findViewById ( R.id.shop_name );
         shop_beginSum = view.findViewById ( R.id.shop_beginSum );
@@ -102,6 +134,7 @@ public class AddShopPopupwindow extends PopupWindow{
         shop_buyNum = view.findViewById ( R.id.shop_buyNum );
         delete_shopNum = view.findViewById ( R.id.delete_shopNum );
         add_shopNum = view.findViewById ( R.id.add_shopNum );
+        shop_Num =view.findViewById ( R.id.shop_Num );
         shop_Sum = view.findViewById ( R.id.shop_Sum );
         num_tv = view.findViewById ( R.id.num_tv );
         money_tv = view.findViewById ( R.id.money_tv );
@@ -115,20 +148,21 @@ public class AddShopPopupwindow extends PopupWindow{
                 case R.id.add_shopNum:
                     i++;
                     shop_Sum.setText ( i+"" );
-                    money_tv.setText ( "￥"+i*Float.parseFloat ( shop_Price.getText ().toString ())+"" );
+                    money_tv.setText ( "￥"+i*ds.wholesalePrice );
                     num_tv.setText ("共"+i+"箱" );
                     break;
                 case R.id.delete_shopNum:
-                    if (i<2){
-                        Toast.makeText ( view.getContext (),"商品最少起售为1",Toast.LENGTH_SHORT ).show ();
+                    if (i<ds.minNum+1){
+                        Toast.makeText ( view.getContext (),"商品最少起售为"+ds.minNum+"~",Toast.LENGTH_SHORT ).show ();
                     }else {
                         i--;
                     }
                     shop_Sum.setText ( i+"" );
                     num_tv.setText ( "共"+i+"箱" );
-                    money_tv.setText ( "￥"+i*Float.parseFloat ( shop_Price.getText ().toString ())+"" );
+                    money_tv.setText ( "￥"+i*ds.wholesalePrice);
                     break;
             }
         }
     }
+
 }
