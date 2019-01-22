@@ -17,8 +17,11 @@ import com.example.plb.fragment.MyShopFragment;
 
 
 public class InformationActivity extends AppCompatActivity implements View.OnClickListener{
+
         private RelativeLayout myShop,myAccount;
+
         private TextView myShopText,myAccountText;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -28,9 +31,9 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
             ActionBar();
             init();
 
-
             replaceFragment(new MyShopFragment());
         }
+
         private void init(){
             myShop = findViewById(R.id.my_shop);
             myAccount = findViewById(R.id.my_account);
@@ -39,6 +42,7 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
             myShop.setOnClickListener(this);
             myAccount.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
             switch (v.getId()){
