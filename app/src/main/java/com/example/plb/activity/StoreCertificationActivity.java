@@ -99,7 +99,7 @@ public class StoreCertificationActivity extends AppCompatActivity implements Vie
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openAlbum();
                 } else {
-                    Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "方法执行失败，版本不对", Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
