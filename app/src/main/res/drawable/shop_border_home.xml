@@ -1,9 +1,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <solid android:color="@android:color/white" />
+    <solid android:color="@color/lightgoldenrodyellow" />
 
     <stroke
-        android:width="2dp"
+        android:width="1dp"
 
         android:color="@color/line_home" />
 

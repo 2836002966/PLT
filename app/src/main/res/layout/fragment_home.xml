@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!--android:fitsSystemWindows="true"/-->
+
         <RelativeLayout
             android:id="@+id/title_home"
             android:layout_alignParentTop="true"
@@ -30,15 +30,17 @@
                 android:textSize="17sp"
                 />
             <EditText
+                android:id="@+id/tv_search_home"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/adr_home"
-                android:id="@+id/tv_search_home"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/search_home"
-                android:drawableLeft="@mipmap/search"
+                android:drawableLeft="@mipmap/search_home"
                 android:drawablePadding="10dp"
                 android:padding="5dp"
                 android:hint="蓝月亮黄金套装七折起"
@@ -104,9 +106,10 @@
         android:gravity="center_vertical"
         >
         <TextView
+            android:id="@+id/action_season_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="吃货复苏季"
+            android:text=""
             android:textSize="17sp"
             android:paddingLeft="30dp"
             android:textColor="@color/black"
@@ -122,10 +125,10 @@
            >
 
            <ImageView
-               android:layout_width="wrap_content"
+               android:id="@+id/image_season_home"
+               android:layout_width="match_parent"
                android:layout_height="100dp"
-               android:layout_weight="1"
-               android:background="@mipmap/banner3" />
+                />
 
            <GridLayout
                android:layout_marginTop="10dp"
@@ -133,7 +136,8 @@
                android:layout_height="wrap_content"
                android:rowCount="1"
                android:columnCount="3"
-               android:layout_below="@+id/action_home">
+               android:layout_below="@+id/action_home"
+               android:background="@drawable/shop_border_home">
 
            <LinearLayout
                android:id="@+id/home_shop_layout1"
@@ -145,20 +149,24 @@
                android:layout_columnWeight="1"
                android:layout_gravity="center"
                android:gravity="center"
+               android:background="@drawable/shop_border_home"
                >
                <TextView
+                   android:id="@+id/season_type1"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="水和乳饮"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/season_action1"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="满800返16"/>
+                  />
                <ImageView
+                   android:id="@+id/season_image1"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/hn"/>
+                  />
            </LinearLayout>
 
            <LinearLayout
@@ -170,20 +178,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/season_type2"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="粮油副食"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/season_action2"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="满800返16"/>
+                  />
                <ImageView
+                   android:id="@+id/season_image2"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/jly"/>
+                   />
            </LinearLayout>
 
            <LinearLayout
@@ -195,20 +207,23 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/season_type3"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="休闲食品"
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/season_action3"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="秒杀5折"/>
+                 />
                <ImageView
+                   android:id="@+id/season_image3"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/ls"/>
+                   />
            </LinearLayout>
            </GridLayout>
            <View
@@ -227,12 +242,12 @@
            android:layout_below="@+id/kh_ph_home"
            android:gravity="center_vertical">
            <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="特价商品"
-           android:textSize="17sp"
-           android:paddingLeft="30dp"
-           android:layout_alignParentLeft="true"/>
+               android:id="@+id/tv_tejia_home"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="17sp"
+               android:paddingLeft="30dp"
+               android:layout_alignParentLeft="true"/>
 
            <TextView
                android:id="@+id/action_more"
@@ -261,6 +276,7 @@
        android:rowCount="2"
        android:columnCount="3"
        android:layout_below="@+id/action_home"
+       android:background="@drawable/shop_border_home"
        >
 
        <LinearLayout
@@ -273,20 +289,24 @@
            android:layout_columnWeight="1"
            android:layout_gravity="center"
            android:gravity="center"
+           android:background="@drawable/shop_border_home"
            >
            <TextView
+               android:id="@+id/tejia_type1"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="水和乳饮"
+
                android:textColor="@color/black"/>
            <TextView
+               android:id="@+id/tejia_action1"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="满800返16"/>
+               />
            <ImageView
+               android:id="@+id/tejia_image1"
                android:layout_width="@dimen/shop_WandH"
                android:layout_height="@dimen/shop_WandH"
-               android:background="@mipmap/hn"/>
+               />
        </LinearLayout>
 
            <LinearLayout
@@ -298,20 +318,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/tejia_type2"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="粮油副食"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/tejia_action2"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="满800返16"/>
+                  />
                <ImageView
+                   android:id="@+id/tejia_image2"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/jly"/>
+                  />
            </LinearLayout>
 
            <LinearLayout
@@ -323,20 +347,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/tejia_type3"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="休闲食品"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/tejia_action3"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="秒杀5折"/>
+                   />
                <ImageView
+                   android:id="@+id/tejia_image3"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/ls"/>
+                   />
            </LinearLayout>
 
 
@@ -350,20 +378,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/tejia_type4"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="个户家清"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/tejia_action4"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="0.99元秒杀"/>
+                   />
                <ImageView
+                   android:id="@+id/tejia_image4"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/qidu"/>
+                   />
            </LinearLayout>
 
            <LinearLayout
@@ -376,25 +408,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/tejia_type5"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="家纺百货"
+
                    android:textColor="@color/black"/>
                <TextView
+                   android:id="@+id/tejia_action5"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="5折起疯抢"/>
+                   />
                <ImageView
+                   android:id="@+id/tejia_image5"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/wd"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="正品直降" />
+                   />
            </LinearLayout>
 
            <LinearLayout
@@ -407,17 +438,24 @@
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                android:layout_gravity="center"
-               android:gravity="center">
+               android:gravity="center"
+               android:background="@drawable/shop_border_home">
                <TextView
+                   android:id="@+id/tejia_type6"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="母婴玩具"
-                   android:textColor="@color/black"/>
 
+                   android:textColor="@color/black"/>
+               <TextView
+                   android:id="@+id/tejia_action6"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   />
                <ImageView
+                   android:id="@+id/tejia_image6"
                    android:layout_width="@dimen/shop_WandH"
                    android:layout_height="@dimen/shop_WandH"
-                   android:background="@mipmap/kinder"/>
+                   />
            </LinearLayout>
        </GridLayout>
 
@@ -434,9 +472,10 @@
                android:layout_alignParentTop="true"
                />
            <TextView
+               android:id="@+id/tv_hot_home"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="热销商品"
+
                android:textSize="17sp"
                android:paddingLeft="30dp"
                android:layout_alignParentLeft="true"/>
