@@ -1,6 +1,7 @@
 package com.example.plb.activity;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,6 +24,8 @@ import com.example.plb.database.ShopDatabase;
 import com.example.plb.fragment.DetailsShopFragment;
 import com.example.plb.fragment.ShopFragment;
 
+import java.math.BigDecimal;
+
 /**
  * Created by 陈 on 2019/1/3.
  */
@@ -42,6 +45,7 @@ public class AddShopPopupwindow extends PopupWindow{
     private TextView num_tv;//底部商品购买数量
     private TextView money_tv;//商品总价
     private Button add_btn;//确认数目后加入进货单
+    private long ll;
     DetailsShopFragment ds = new DetailsShopFragment ();
     int i =ds.minNum;;
     public AddShopPopupwindow(Activity context, View.OnClickListener itemsOnClick){
@@ -59,10 +63,19 @@ public class AddShopPopupwindow extends PopupWindow{
         add_btn.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                ShopDatabase shopDatabase = new ShopDatabase ( view.getContext (),1 );
+                ShopDatabase shopDatabase = new ShopDatabase ( view.getContext (),null,1 );
                 //获取连接
                 SQLiteDatabase database = shopDatabase.getReadableDatabase ();
-                Toast.makeText ( view.getContext (), "加入进货单成功", Toast.LENGTH_SHORT ).show ();
+                ContentValues values = new ContentValues ( );
+                values.clear ();
+                values.put ( "shop_img",ds.image );//图片地址
+                values.put ( "shop_name",ds.info );//商品名称
+                values.put ( "shop_wholesalePrice",ds.wholesalePrice );//商品单价
+                values.put ( "shop_buyNum",i );//购买数量
+                values.put ( "shop_follow",ds.checkd );//是否关注
+                ll = database.insert ( "shop_details",null,values );
+                database.close ();
+                Toast.makeText ( view.getContext (), "亲，在购物车等你哟~", Toast.LENGTH_SHORT ).show ();
                 dismiss ();
             }
         } );
@@ -146,20 +159,28 @@ public class AddShopPopupwindow extends PopupWindow{
         public void onClick(View v) {
             switch (v.getId ()){
                 case R.id.add_shopNum:
-                    i++;
+                    if(i>ds.stocks-1){
+                        Toast.makeText ( view.getContext (),"商品最大售量为"+ds.stocks+""+ds.unit+"~",Toast.LENGTH_SHORT ).show ();
+                    }else {
+                        i++;
+                    }
+                    BigDecimal BD = new BigDecimal(i*ds.wholesalePrice);
+                    BigDecimal resultBD = BD.setScale(2, java.math.BigDecimal.ROUND_HALF_UP);
                     shop_Sum.setText ( i+"" );
-                    money_tv.setText ( "￥"+i*ds.wholesalePrice );
+                    money_tv.setText ( "￥"+resultBD );
                     num_tv.setText ("共"+i+"箱" );
                     break;
                 case R.id.delete_shopNum:
                     if (i<ds.minNum+1){
-                        Toast.makeText ( view.getContext (),"商品最少起售为"+ds.minNum+"~",Toast.LENGTH_SHORT ).show ();
+                        Toast.makeText ( view.getContext (),"商品最少起售为"+ds.minNum+""+ds.unit+"~",Toast.LENGTH_SHORT ).show ();
                     }else {
                         i--;
                     }
                     shop_Sum.setText ( i+"" );
                     num_tv.setText ( "共"+i+"箱" );
-                    money_tv.setText ( "￥"+i*ds.wholesalePrice);
+                    BigDecimal BDL = new BigDecimal(i*ds.wholesalePrice);
+                    BigDecimal resultBDL = BDL.setScale(2, java.math.BigDecimal.ROUND_HALF_UP);
+                    money_tv.setText ( "￥"+resultBDL);
                     break;
             }
         }

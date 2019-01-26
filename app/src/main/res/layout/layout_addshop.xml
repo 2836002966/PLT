@@ -111,8 +111,8 @@
                 android:background="@drawable/sum_style"
                 android:id="@+id/shop_Sum"
                 android:textSize="20dp"
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
             <ImageButton
                 android:id="@+id/add_shopNum"
                 android:background="@color/white"

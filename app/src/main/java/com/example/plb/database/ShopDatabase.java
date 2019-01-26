@@ -10,15 +10,16 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class ShopDatabase extends SQLiteOpenHelper{
-
-    public ShopDatabase( Context context, int version) {
-        super ( context, "shop.db", null, version);
+    private Context context;
+    public ShopDatabase(Context context,  SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, null,null, version);
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //建表
-        String sql = "create table shop(_id integer primary key autoincrement,shop_img varchar,shop_title varchar,shop_money float,shop_Startselling int,shop_salablequantity int,shop_buyNum int,shop_totalprice flaot)";
+        String sql = "create table shop_details(_id integer primary key autoincrement,shop_img varchar,shop_name varchar,shop_summoney float,shop_wholesalePrice float,shop_buyNum int,shop_follow boolean)";
         db.execSQL ( sql );
     }
 

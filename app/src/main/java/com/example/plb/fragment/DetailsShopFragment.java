@@ -11,9 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.plb.activity.AddShopPopupwindow;
@@ -44,7 +47,9 @@ public class DetailsShopFragment extends Fragment {
     public JSONObject object;
     private OkHttpClient client = new OkHttpClient();
     private ImageView imageView;//商品图片
+    private CheckBox checkBox;//关注
     int num=1;
+    public static boolean checkd;
     public static String info,unit,image,detailedurl;
     public static int minNum,stocks;
     public static double wholesalePrice;
@@ -58,6 +63,20 @@ public class DetailsShopFragment extends Fragment {
         initview();
         okhttpShopDate();
         add_shop.setOnClickListener ( new MyOnClickListener ());
+        checkBox.setOnCheckedChangeListener ( new CompoundButton.OnCheckedChangeListener () {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    isChecked =true;
+                    checkd = isChecked;
+                    //Toast.makeText ( getContext (), ""+checkd, Toast.LENGTH_SHORT ).show ();
+                }else{
+                    isChecked =false;
+                    checkd = isChecked;
+                    //Toast.makeText ( getContext (), ""+checkd, Toast.LENGTH_SHORT ).show ();
+                }
+            }
+        } );
         return view;
     }
 
@@ -73,6 +92,7 @@ public class DetailsShopFragment extends Fragment {
         shelfLife =view.findViewById ( R.id.ShelfLife );
         imageView =view.findViewById ( R.id.details_shop_iv );
         shop_retailPrice =view.findViewById ( R.id.retailPrice );
+        checkBox = view.findViewById ( R.id.checkbox );
     }
 
     //点击
@@ -167,8 +187,6 @@ public class DetailsShopFragment extends Fragment {
                     shelfLife.setText ( ""+shopBean.getShelfLife () );
                     shop_retailPrice.setText ( "￥"+shopBean.getRetailPrice ()+"/"+ shopBean.getUnit ());
                     Glide.with (view.getContext ()).load ( shopBean.getImage () ).into ( imageView );
-                    break;
-                case 2:
                     break;
             }
         }
